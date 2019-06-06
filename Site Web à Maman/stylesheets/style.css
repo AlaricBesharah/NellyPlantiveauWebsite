@@ -1,0 +1,197 @@
+body {
+    margin:0;
+    padding:0;
+    font-family: 'Titillium Web', sans-serif;
+    background-color:#eee;
+}
+
+.container {
+    position:relative;
+    padding-bottom:40px;
+    overflow: auto;
+    min-height: 100vh;
+    width:100%;
+    max-width: 1920px;
+    background-color:white;
+    margin:auto;
+    box-shadow: 0px 4px 14px -2px rgba(0,0,0,0.59);
+}
+
+.banner {
+    width:100%;
+    height:100px;
+    background:#ddd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#logo{
+    height:40px;
+    margin-left:30px;
+    margin-top:30px;
+    float:left;
+}
+
+#paws{
+    height:40px;
+    margin-right:30px;
+    margin-top:30px;
+    float:right;
+    position: relative;
+}
+#paws::after{
+    content:"BACK TO PAWS";
+    color:black;
+    font-size:20pt;
+    display:block;
+    text-align: center;
+}
+
+.description{
+    margin-left:5%;
+    margin-right:5%;
+    color: #666;
+}
+
+h1 {
+    margin-left:5%;;
+    color: #42aaf4;
+}
+
+h3 {
+    margin-left: 10px;
+    color:#222;
+
+}
+
+.collapsible {
+    position:relative;
+    margin: auto;
+    margin-top:20px;
+    width:90%;
+    height:50px;
+    background-color:#777;
+    cursor:pointer;
+    transition: ease-in 0.1s;
+}
+
+.active, .collapsible:hover {
+    background-color:#42aaf4;
+    color:white;
+}
+
+.collapsible::after{
+    padding-left:10px;
+    padding-top:13px;
+    color:white;
+    content: ' + ';
+    background: #F06449;
+    display: block;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:calc(100% - 30px);
+    right:0;
+    transition: ease-out 0.2s;
+}
+
+.collapsible:hover::after{
+    background:#42aaf4;
+}
+
+.collapsible p {
+    position: relative;
+    left:20px;
+    top: 12px;
+    color:white;
+}
+
+.content{
+    /* font-family: 'Lato', sans-serif; */
+    box-sizing: border-box;
+    width:90%;
+    margin:auto;
+    display: none;
+    overflow: hidden;
+    background-color:white;
+    color:#333;
+    border-right: 2px solid #F06449;
+    border-bottom: 2px solid #F06449;
+    border-left: 2px solid #F06449;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.04), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.content p{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.tab {
+  overflow: hidden;
+  background-color: #F06449;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  padding: 14px 16px;
+  transition: ease 0.3s;
+  font-size: 17px;
+  color:white;
+}
+
+.tab button:hover, .tab button.active {
+  background-color: #ff7f4c;
+}
+
+.tab button::after{
+    content:' ';
+    width:0px;
+    height:4px;
+    background:rgba(255,255,255,0);
+    display: block;
+    position: absolute;
+    left:calc(50%);
+    bottom: 0px;
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.tab button:hover::after, .tab button.active::after {
+    background: #fff;
+    left:0px;
+    width:100%;
+}
+
+.tabcontent {
+  padding: 6px 12px;
+}
+
+.openButton {
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left:10px;
+    margin-top:15px;
+    margin-bottom:15px;
+    border:none;
+    height:40px;
+    padding-left:20px;
+    padding-right:20px;
+    background:#F06449;
+    color:white;
+    border-radius:25px;
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.openButton:hover{
+    background:#ff7f4c;
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    box-shadow: 0px 5px 0px 0px #F06449;
+}
+
+#dickbutt{
+    height:100vh;
+    margin: auto;
+}
