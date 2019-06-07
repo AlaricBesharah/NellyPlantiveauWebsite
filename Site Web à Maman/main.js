@@ -1,3 +1,5 @@
+// Add event listener to all collapsible divs
+
 var coll = document.getElementsByClassName("collapsible");
 
 for (var i = 0; i < coll.length; i++) {
@@ -19,14 +21,26 @@ for (var i = 0; i < coll.length; i++) {
   });
 }
 
+// var present = [
+//   ["verbe", "je",   "tu",    "il",   "nous",   "vous",  "ils"],
+
+//   ["aimer", "aime", "aimes", "aime", "aimons", "aimez", "aiment"],
+//   ["aller", "va", "vas", "va", "allons", "allez", "vont"],
+//   ["aimer", "aime", "aimes", "aime", "aimons", "aimez", "aiment"]
+// ];
+
+console.log(verbs[1]);
+
 function openTab(evt, cityName, node) {
-  // alert(node.parentNode.parentNode.className);
-  var i, tabcontent, tablinks;
-  tabcontent = node.parentNode.parentNode.getElementsByClassName("tabcontent");
+  
+  var i;
+  var tabcontent = node.parentNode.parentNode.getElementsByClassName("tabcontent");
+  var tablinks = node.parentNode.parentNode.getElementsByClassName("tablinks");
+
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
-  tablinks = node.parentNode.parentNode.getElementsByClassName("tablinks");
+  
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
