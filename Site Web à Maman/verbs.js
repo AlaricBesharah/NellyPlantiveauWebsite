@@ -1,26 +1,4 @@
-var present = [
-    ["present", "je",   "tu",    "il",   "nous",   "vous",  "ils"],
-    ["aimer", "aime", "aimes", "aime", "aimons", "aimez", "aiment"],
-    ["aller", "va", "vas", "va", "allons", "allez", "vont"]
-];
 
-var imparfait = [
-    ["imparfait", "je", "tu",     "il",     "nous",    "vous",   "ils"],
-    ["aimer", "aimais", "aimais", "aimait", "aimions", "aimiez", "aimaient"],
-    ["aller", "allais", "allais", "allait", "allions", "alliez", "allaient"],
-    ["aller", "allais", "allais", "allait", "allions", "alliez", "allaient"]
-];
-
-var passéComposé = [
-    ["passé Composé", "je", "tu",     "il",     "nous",    "vous",   "ils"],
-    ["aimer", "aimais", "aimais", "aimait", "aimions", "aimiez", "aimaient"],
-    ["aller", "allais", "allais", "allait", "allions", "alliez", "allaient"],
-    ["aller", "allais", "allais", "allait", "allions", "alliez", "allaient"]
-];
-
-
-var verbs103 = [present];
-var verbs106 = [present, imparfait,passéComposé];
 var ready = true;
 var singleDescription = "Temporary FREN 103 verb practise description.";
 var multipleDescription = "Select all verbs tenses below which you want to practise";
@@ -67,5 +45,35 @@ function startsWithVowel(verb) {
     return ("aeiouAEIOU".indexOf(x) != -1); 
 }
 
+// This fills the contents of the test zone based on which verbs are selected
+// call this function when the page is loaded or when checkboxes are turned on/off
+// as well as when the new button is pressed
 
+function loadVerbOptions(page){
+    switch(page){
+        case '103':
+            var index = getRandomInt(1, present.length);
+            var infinitif = present[index][0];
+            var person = getRandomInt(1,present[0].length);
+            var pronoun = present[0][person];
+            var verb = present[index][person];
+            if(startsWithVowel(verb) && person === 1) { pronoun = "j'"; }
+            var test = document.getElementById("verbTest");
+            var p = document.createElement("p");
+            p.innerHTML = "Present." + infinitif + ". " + pronoun + " " + verb;
+            test.appendChild(p);
+            break;
+        case '106':
+            var test = document.getElementById("verbTest");
+            var p = document.createElement("p");
+            p.innerHTML = "404: Boggesh not found";
+            test.appendChild(p);
+            break;
+        default:
+            console.log("Cannot load verbs for this page: " + page);
+    }
+}
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
