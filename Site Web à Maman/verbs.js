@@ -59,14 +59,24 @@ function loadVerbOptions(page){
             var verb = present[index][person];
             if(startsWithVowel(verb) && person === 1) { pronoun = "j'"; }
             var test = document.getElementById("verbTest");
-            var p = document.createElement("p");
-            p.innerHTML = "Present." + infinitif + ". " + pronoun + " " + verb;
-            test.appendChild(p);
+            document.getElementById("verbName").innerHTML = infinitif;
+            document.getElementById("verbTense").innerHTML = "Present";
+            document.getElementById("pronoun").innerHTML = pronoun;
+            var button = document.getElementById("testButton");
+            document.getElementById("testButton").onclick = function() { 
+                var answer = document.getElementById("answer").value;
+                if(answer === verb){
+                    alert("YAY!");
+                    loadVerbOptions("103");
+                } else {
+                    alert("Try again! D:");
+                }
+            }
             break;
         case '106':
             var test = document.getElementById("verbTest");
             var p = document.createElement("p");
-            p.innerHTML = "404: Boggesh not found";
+            p.innerHTML = "404: thingamabob not found";
             test.appendChild(p);
             break;
         default:

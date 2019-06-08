@@ -191,6 +191,7 @@ h3 {
 }
 
 .openButton {
+
     text-transform: uppercase;
     cursor: pointer;
     margin-left:10px;
@@ -292,4 +293,14 @@ h3 {
 
 #verbTest:hover{
     box-shadow:  0 0px 15px rgba(0,0,0,0.3);
+}
+
+#answer{
+    padding:10px;
+    font-family: 'Titillium Web', sans-serif;
+    border:1px solid dodgerblue;
+}
+
+* {
+    outline: none;
 }
