@@ -5,11 +5,20 @@ body {
     background-color:#eee;
 }
 
+::selection {
+    color:white;
+    background:#F06449; 
+  }
+  ::-moz-selection {
+    color: white;
+    background:#F06449; 
+  }
+
 .container {
     position:relative;
     padding-bottom:40px;
     overflow: auto;
-    min-height: 100vh;
+    min-height: calc(100vh - 40px);
     width:100%;
     max-width: 1920px;
     background-color:white;
@@ -19,9 +28,17 @@ body {
 
 .banner {
     width:100%;
+    max-width: 1920px;
     height:100px;
-    background:#ddd;
+    background:#eee;
     box-shadow: 0 3px 6px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.centeredContent {
+    margin-top:120px;
+    width:100%;
+    max-width: 1000px;
+    margin:auto;
 }
 
 #logo{
@@ -32,18 +49,17 @@ body {
 }
 
 #paws{
-    height:40px;
-    margin-right:30px;
-    margin-top:30px;
+    height:30px;
+    margin-right:35px;
+    margin-top:35px;
     float:right;
     position: relative;
+    filter: grayscale(100%);
+    transition: filter cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
 }
-#paws::after{
-    content:"BACK TO PAWS";
-    color:black;
-    font-size:20pt;
-    display:block;
-    text-align: center;
+
+#paws:hover{
+    filter: grayscale(0%);
 }
 
 .description{
@@ -54,7 +70,12 @@ body {
 
 h1 {
     margin-left:5%;;
-    color: #42aaf4;
+    color: #555;
+}
+
+h2 {
+    margin-left:5%;;
+    color: #555;
 }
 
 h3 {
@@ -75,8 +96,7 @@ h3 {
 }
 
 .active, .collapsible:hover {
-    background-color:#42aaf4;
-    color:white;
+    background-color:#999;
 }
 
 .collapsible::after{
@@ -95,7 +115,8 @@ h3 {
 }
 
 .collapsible:hover::after{
-    background:#42aaf4;
+    color:#333;
+    background:#ddd;
 }
 
 .collapsible p {
@@ -179,19 +200,96 @@ h3 {
     height:40px;
     padding-left:20px;
     padding-right:20px;
-    background:#F06449;
+    background:#42aaf4;
     color:white;
-    border-radius:25px;
+    border-radius:15px;
     transition:cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
 }
 
 .openButton:hover{
-    background:#ff7f4c;
+    background:#4fb2f8;
     transition:cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
-    box-shadow: 0px 5px 0px 0px #F06449;
+    box-shadow: 0px 5px 0px 0px #2299ee;
 }
 
-#dickbutt{
-    height:100vh;
-    margin: auto;
+#checkZone{
+    margin-left:5%;
+    margin-bottom:25px;
+    padding-left:20px;
+    width: 300px;
+    position:relative;
+}
+
+.checkRow {
+    color:white;
+    width:100%;
+    height:30px;
+}
+
+.checkTag{
+    font-size:110%;
+    color:black;
+    text-transform: capitalize;
+    position:relative;
+    top:-37px;
+    left:40px;
+}
+
+.checkRow input{
+    position: relative;
+    top:12px;
+    width:20px;
+    height:20px;
+    -webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	padding: 9px;
+}
+
+.checkRow input:checked{
+    background-color: #42aaf4;
+	border: 1px solid #cacece;
+	/* box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1); */
+	color: #99a1a7;
+}
+
+.checkRow input:checked::after {
+	content:" ";
+    position: absolute;
+    height:3px;
+    width:5px;
+	top: 9px;
+    left: 3px;
+    transform: rotate(45deg);
+	background-color: white;
+}
+
+.checkRow input:checked::before {
+	content:" ";
+    position: absolute;
+    height:3px;
+    width:12px;
+	top: 8px;
+    left: 5px;
+    transform: rotate(-45deg);
+	background-color: white;
+}
+
+#contentContainer{
+    width:100%;
+}
+
+#verbTest{
+    height:400px;
+    border-radius: 20px;
+    width:100%;
+    float:left;
+    margin-left:5%;
+    margin-top:10px;
+    transition: ease 0.3s;
+    box-shadow:  0 0px 10px rgba(0,0,0,0.1);
+}
+
+#verbTest:hover{
+    box-shadow:  0 0px 15px rgba(0,0,0,0.3);
 }
