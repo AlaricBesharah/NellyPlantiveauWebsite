@@ -52,7 +52,8 @@ function startsWithVowel(verb) {
 function loadVerbOptions(page){
     switch(page){
         case '103':
-
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("resetButton").innerHTML = "skip";
             // TODO CHOSE verb and then get person.
             document.getElementById('answer').value = ''
             var index = getRandomInt(1, present.length);
@@ -70,12 +71,15 @@ function loadVerbOptions(page){
             document.getElementById("testButton").onclick = function() { 
                 var answer = document.getElementById("answer").value;
                 if(answer === verb){
-                    console.log("Yay! :D")
-                    loadVerbOptions("103");
+                    document.getElementById("result").innerHTML = "CORRECC!"
+                    document.getElementById("resetButton").innerHTML = "next";
                 } else {
-                    console.log("Try again... D:")
-                    loadVerbOptions("103");
+                    document.getElementById("result").innerHTML = "WRONG! Try again...";
                 }
+            }
+            document.getElementById("resetButton").onclick = function() { 
+                loadVerbOptions("103");
+                document.getElementById("answer").focus(); 
             }
             break;
         case '106':

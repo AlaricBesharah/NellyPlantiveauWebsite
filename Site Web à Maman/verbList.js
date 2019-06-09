@@ -27,7 +27,7 @@ var present = [
     ["trouver","trouve","trouves","trouve","trouvons","trouvez","trouvent"],
     ["voyager","voyage","voyages","voyage","voyageons","voyagez","voyagent"],
     ["être","suis","es ","est","sommes","êtes","sont"],
-    ["avoir","aime","aimes","aime","aimons","aimez","aiment"],
+    ["avoir","ai","as","a","avons","avez","ont"],
     ["chanter","chante","chantes","chante","chantons","chantez","chantent"],
     ["continuer","continue","continues","continue","continuons","continuez","continuent"],
     ["faire","fais","fais","fait","faisons","faites","font"],
