@@ -1,7 +1,7 @@
 var present = [
     ["present","je","tu","il","nous","vous","ils", "elles", "elle"],
     ["aimer","aime","aimes","aime","aimons","aimez","aiment"],
-    ["adorer","adore","adores","adore","adorons","adorez","adorent", "adorentes", "adoree"],
+    ["adorer","adore","adores","adore","adorons","adorez","adorent"],
     ["appeler","appelle","appelles","appelle","appelons","appelez","appellent"],
     ["chercher","cherche","cherches","cherche","cherchons","cherchez","cherchent"],
     ["coûter","coûte","coûtes","coûte","coûtons","coûtez","coûtent"],

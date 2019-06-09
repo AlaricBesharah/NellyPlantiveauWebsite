@@ -37,7 +37,7 @@ body {
 .centeredContent {
     margin-top:120px;
     width:100%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin:auto;
 }
 
@@ -207,7 +207,7 @@ h3 {
     padding-right:20px;
     background:#42aaf4;
     color:white;
-    border-radius:25px;
+    border-radius:5px;
     transition:cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
 }
 
@@ -284,13 +284,13 @@ h3 {
 }
 
 #verbTest{
-    height:400px;
+    position:relative;
     border-radius: 20px;
     width:90%;
-    /* float:left; */
-    /* margin-left:5%; */
+    padding-top:30px;
+    padding-bottom:10px;
     margin:auto;
-    margin-top:10px;
+    margin-bottom:70px;
     transition: ease 0.3s;
     box-shadow:  0 0px 10px rgba(0,0,0,0.1);
 }
@@ -299,10 +299,73 @@ h3 {
     box-shadow:  0 0px 15px rgba(0,0,0,0.3);
 }
 
+
+#verbName, #verbTense{
+    text-align: left;
+    margin:0;
+    padding-left:80px;
+    width:100%;
+    display: inline-block;
+    font-size:25pt;
+    text-transform:capitalize;
+}
+
+#pronoun {
+    display: inline-block;
+    font-size:15pt;
+    text-transform:capitalize;
+}
+
 #answer{
+    margin-left:30px;
+    margin-right:10px;
     padding:10px;
+    font-size:15pt;
     font-family: 'Titillium Web', sans-serif;
     border:1px solid dodgerblue;
+}
+
+#verbName::before{
+    content:"Verb: ";
+    font-size:20pt;
+    color:#F06449;
+}
+
+#verbTense::before{
+    content:"Tense: ";
+    font-size:20pt;
+    color:#F06449;
+    
+}
+
+#answerContainer{
+    margin-top:20px;
+    margin-left:80px;
+}
+
+#resetButton{
+    background-color:#F06449;
+    position: absolute;
+    bottom:10px;
+    right:10px;
+}
+
+#resetButton:hover{
+    background-color:#ff7f4c;
+    box-shadow: 0px 5px 0px 0px #F06449;
+}
+
+
+.reaction {
+    position: absolute;
+    bottom:70px;
+    right:10px;
+    width:75px;
+    height:75px;
+}
+
+#ok, #nah{
+    display:none;
 }
 
 * {

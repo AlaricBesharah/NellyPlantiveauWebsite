@@ -42,7 +42,7 @@ function createVerbOptions(verbList){
 // Returns true if first char of a string is a vowel, false otherwise
 function startsWithVowel(verb) {
     var x = verb.charAt(0);
-    return ("aeiouAEIOU".indexOf(x) != -1); 
+    return ("aeéiouAEÉIOU".indexOf(x) != -1); 
 }
 
 // This fills the contents of the test zone based on which verbs are selected
@@ -52,9 +52,9 @@ function startsWithVowel(verb) {
 function loadVerbOptions(page){
     switch(page){
         case '103':
-            document.getElementById("result").innerHTML = "";
+            document.getElementById("ok").style.display = "none";
+            document.getElementById("nah").style.display = "none";
             document.getElementById("resetButton").innerHTML = "skip";
-            // TODO CHOSE verb and then get person.
             document.getElementById('answer').value = ''
             var index = getRandomInt(1, present.length);
             var person = getRandomInt(1,present[index].length);
@@ -70,11 +70,13 @@ function loadVerbOptions(page){
             var button = document.getElementById("testButton");
             document.getElementById("testButton").onclick = function() { 
                 var answer = document.getElementById("answer").value;
-                if(answer === verb){
-                    document.getElementById("result").innerHTML = "CORRECC!"
+                if(answer.toLowerCase() === verb){
+                    document.getElementById("nah").style.display = "none";
+                    document.getElementById("ok").style.display = "inline-block";
                     document.getElementById("resetButton").innerHTML = "next";
                 } else {
-                    document.getElementById("result").innerHTML = "WRONG! Try again...";
+                    document.getElementById("ok").style.display = "none";
+                    document.getElementById("nah").style.display = "inline-block";
                 }
             }
             document.getElementById("resetButton").onclick = function() { 
