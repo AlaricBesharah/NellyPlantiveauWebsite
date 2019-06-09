@@ -83,6 +83,3 @@ var passéComposé = [
 
 var verbs103 = [present];
 var verbs106 = [present, imparfait, passéComposé];
-
-// selected = [1,2,3]
-

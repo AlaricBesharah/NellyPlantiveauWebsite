@@ -72,6 +72,7 @@ function loadVerbOptions(page){
                 if(allVerbs[i].checked){selectedTenses.push(i)}
             }
             if(selectedTenses.length > 0){
+                showTest();
                 var randomeTense = getRandomInt(0,selectedTenses.length); // random selected tense
                 console.log("Random number = " + randomeTense);
                 var selectedVerb = verbs106[selectedTenses[randomeTense]];
@@ -84,6 +85,9 @@ function loadVerbOptions(page){
                 if(startsWithVowel(verb) && person === 1) { pronoun = "j'"; }
                 setContent(verbName, infinitif, pronoun, verb);
                 setButtons(verb, "106");
+            }
+            else{
+                hideTest();
             }
             break;
         default:
@@ -131,4 +135,20 @@ function submitVerb(verb){
         document.getElementById("ok").style.display = "none";
         document.getElementById("nah").style.display = "inline-block";
     }
+}
+
+function hideTest(){
+    document.getElementById("answerContainer").style.display = "none";
+    document.getElementById("emptyMessage").innerHTML = "Please select at least one verb tense to begin";
+    document.getElementById("verbTense").style.display = "none";
+    document.getElementById("verbName").style.display = "none";
+    document.getElementById("resetButton").style.display = "none";
+}
+
+function showTest(){
+    document.getElementById("answerContainer").style.display = "flex";
+    document.getElementById("emptyMessage").innerHTML = "";
+    document.getElementById("verbTense").style.display = "block";
+    document.getElementById("verbName").style.display = "block";
+    document.getElementById("resetButton").style.display = "block";
 }

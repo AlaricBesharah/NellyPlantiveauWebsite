@@ -284,6 +284,7 @@ h3 {
 }
 
 #verbTest{
+    display:block;
     position:relative;
     border-radius: 20px;
     width:90%;
@@ -299,8 +300,12 @@ h3 {
     box-shadow:  0 0px 15px rgba(0,0,0,0.3);
 }
 
+#verbTest h2{
+    color:#ff7f4c;
+}
 
 #verbName, #verbTense{
+    display: block;
     text-align: left;
     margin:0;
     padding-left:80px;
@@ -349,6 +354,7 @@ h3 {
 }
 
 #resetButton{
+    display:block;
     background-color:#F06449;
     position: absolute;
     bottom:34px;
