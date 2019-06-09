@@ -283,9 +283,10 @@ h3 {
 #verbTest{
     height:400px;
     border-radius: 20px;
-    width:100%;
-    float:left;
-    margin-left:5%;
+    width:90%;
+    /* float:left; */
+    /* margin-left:5%; */
+    margin:auto;
     margin-top:10px;
     transition: ease 0.3s;
     box-shadow:  0 0px 10px rgba(0,0,0,0.1);
