@@ -1,5 +1,5 @@
 var present = [
-    ["present","je","tu","il","nous","vous","ils", "elles", "elle"],
+    ["présent","je","tu","il","nous","vous","ils", "elles", "elle"],
     ["aimer","aime","aimes","aime","aimons","aimez","aiment"],
     ["adorer","adore","adores","adore","adorons","adorez","adorent"],
     ["appeler","appelle","appelles","appelle","appelons","appelez","appellent"],
@@ -82,5 +82,7 @@ var passéComposé = [
 
 
 var verbs103 = [present];
-var verbs106 = [present, imparfait,passéComposé];
+var verbs106 = [present, imparfait, passéComposé];
+
+// selected = [1,2,3]
 

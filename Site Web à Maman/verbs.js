@@ -21,7 +21,9 @@ function createVerbOptions(verbList){
             div.className = "checkRow";
 
             var input = document.createElement("input");
+            input.className = "checkBoxes";
             input.type = "checkbox";
+            input.onchange = function(){loadVerbOptions("106");};
 
             var para = document.createElement("p");
             para.innerHTML = verbList[i][0][0];
@@ -58,26 +60,31 @@ function loadVerbOptions(page){
             var pronoun = present[0][person];
             var verb = present[index][person];
             if(startsWithVowel(verb) && person === 1) { pronoun = "j'"; }
+
             setContent("Présent", infinitif, pronoun,verb);
-            var button = document.getElementById("testButton");
-            document.getElementById("testButton").onclick = function() { 
-                submitVerb(verb);
-            }
-            document.getElementById("answer").addEventListener('keyup', function onEvent(e) {
-                if (e.keyCode === 13) {
-                    submitVerb(verb);
-                }
-            });
-            document.getElementById("resetButton").onclick = function() { 
-                loadVerbOptions("103");
-                document.getElementById("answer").focus(); 
-            }
+            setButtons(verb, "103");
+
             break;
         case '106':
-            var test = document.getElementById("verbTest");
-            var p = document.createElement("p");
-            p.innerHTML = "404: thingamabob not found";
-            test.appendChild(p);
+            var allVerbs = document.getElementsByClassName("checkBoxes");
+            var selectedTenses = [];
+            for(var i = 0; i < allVerbs.length; i++){
+                if(allVerbs[i].checked){selectedTenses.push(i)}
+            }
+            if(selectedTenses.length > 0){
+                var randomeTense = getRandomInt(0,selectedTenses.length); // random selected tense
+                console.log("Random number = " + randomeTense);
+                var selectedVerb = verbs106[selectedTenses[randomeTense]];
+                var verbName = selectedVerb[0][0];
+                var index = getRandomInt(1, selectedVerb.length); // random verb in selected tense
+                var person = getRandomInt(1,selectedVerb[index].length); 
+                var infinitif = selectedVerb[index][0];
+                var pronoun = selectedVerb[0][person];
+                var verb = selectedVerb[index][person];
+                if(startsWithVowel(verb) && person === 1) { pronoun = "j'"; }
+                setContent(verbName, infinitif, pronoun, verb);
+                setButtons(verb, "106");
+            }
             break;
         default:
             console.log("Cannot load verbs for this page: " + page);
@@ -99,8 +106,19 @@ function setContent(_tense, _infinitif, _pronoun, _verb){
     document.getElementById("pronoun").innerHTML = _pronoun;
 }
 
-function setButtons(){
-
+function setButtons(verb, _class){
+    document.getElementById("testButton").onclick = function() { 
+        submitVerb(verb);
+    }
+    document.getElementById("answer").addEventListener('keyup', function onEvent(e) {
+        if (e.keyCode === 13) {
+            submitVerb(verb);
+        }
+    });
+    document.getElementById("resetButton").onclick = function() { 
+        loadVerbOptions(_class);
+        document.getElementById("answer").focus(); 
+    }
 }
 
 function submitVerb(verb){
