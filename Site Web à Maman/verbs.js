@@ -52,9 +52,13 @@ function startsWithVowel(verb) {
 function loadVerbOptions(page){
     switch(page){
         case '103':
+
+            // TODO CHOSE verb and then get person.
+            document.getElementById('answer').value = ''
             var index = getRandomInt(1, present.length);
+            var person = getRandomInt(1,present[index].length);
+            var verb = present[index][person];  
             var infinitif = present[index][0];
-            var person = getRandomInt(1,present[0].length);
             var pronoun = present[0][person];
             var verb = present[index][person];
             if(startsWithVowel(verb) && person === 1) { pronoun = "j'"; }
@@ -66,10 +70,11 @@ function loadVerbOptions(page){
             document.getElementById("testButton").onclick = function() { 
                 var answer = document.getElementById("answer").value;
                 if(answer === verb){
-                    alert("YAY!");
+                    console.log("Yay! :D")
                     loadVerbOptions("103");
                 } else {
-                    alert("Try again! D:");
+                    console.log("Try again... D:")
+                    loadVerbOptions("103");
                 }
             }
             break;
