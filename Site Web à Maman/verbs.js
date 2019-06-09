@@ -52,33 +52,22 @@ function startsWithVowel(verb) {
 function loadVerbOptions(page){
     switch(page){
         case '103':
-            document.getElementById("ok").style.display = "none";
-            document.getElementById("nah").style.display = "none";
-            document.getElementById("resetButton").innerHTML = "skip";
-            document.getElementById('answer').value = ''
             var index = getRandomInt(1, present.length);
-            var person = getRandomInt(1,present[index].length);
-            var verb = present[index][person];  
+            var person = getRandomInt(1,present[index].length); 
             var infinitif = present[index][0];
             var pronoun = present[0][person];
             var verb = present[index][person];
             if(startsWithVowel(verb) && person === 1) { pronoun = "j'"; }
-            var test = document.getElementById("verbTest");
-            document.getElementById("verbName").innerHTML = infinitif;
-            document.getElementById("verbTense").innerHTML = "Present";
-            document.getElementById("pronoun").innerHTML = pronoun;
+            setContent("Présent", infinitif, pronoun,verb);
             var button = document.getElementById("testButton");
             document.getElementById("testButton").onclick = function() { 
-                var answer = document.getElementById("answer").value;
-                if(answer.toLowerCase() === verb){
-                    document.getElementById("nah").style.display = "none";
-                    document.getElementById("ok").style.display = "inline-block";
-                    document.getElementById("resetButton").innerHTML = "next";
-                } else {
-                    document.getElementById("ok").style.display = "none";
-                    document.getElementById("nah").style.display = "inline-block";
-                }
+                submitVerb(verb);
             }
+            document.getElementById("answer").addEventListener('keyup', function onEvent(e) {
+                if (e.keyCode === 13) {
+                    submitVerb(verb);
+                }
+            });
             document.getElementById("resetButton").onclick = function() { 
                 loadVerbOptions("103");
                 document.getElementById("answer").focus(); 
@@ -97,4 +86,31 @@ function loadVerbOptions(page){
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
+}
+
+// sets all the html of the verbTest section
+function setContent(_tense, _infinitif, _pronoun, _verb){
+    document.getElementById("ok").style.display = "none";
+    document.getElementById("nah").style.display = "none";
+    document.getElementById("resetButton").innerHTML = "skip";
+    document.getElementById('answer').value = '';
+    document.getElementById("verbName").innerHTML = _infinitif;
+    document.getElementById("verbTense").innerHTML = _tense;
+    document.getElementById("pronoun").innerHTML = _pronoun;
+}
+
+function setButtons(){
+
+}
+
+function submitVerb(verb){
+    var answer = document.getElementById("answer").value;
+    if(answer.toLowerCase() === verb){
+        document.getElementById("nah").style.display = "none";
+        document.getElementById("ok").style.display = "inline-block";
+        document.getElementById("resetButton").innerHTML = "next";
+    } else {
+        document.getElementById("ok").style.display = "none";
+        document.getElementById("nah").style.display = "inline-block";
+    }
 }
