@@ -1,21 +1,17 @@
-
-var ready = true;
 var singleDescription = "Temporary FREN 103 verb practise description.";
 var multipleDescription = "Select all verbs tenses below which you want to practise";
+var emptyMessage = "Please select at least one verb tense to begin";
 
 // Create the HTML elements for the verb quiz based on 
 // which list of verbs you pass as parameters
 function createVerbOptions(verbList){
-
     var desc = document.createElement("p");
     desc.className = "description";
 
     if(verbList.length > 1){
-
         desc.innerHTML = multipleDescription;
         document.getElementById("contentContainer").appendChild(desc);
 
-        var checkZone = document.getElementById("checkZone");
         for(var i = 0; i < verbList.length; i++){
             var div = document.createElement("div");
             div.className = "checkRow";
@@ -32,13 +28,51 @@ function createVerbOptions(verbList){
             div.appendChild(input);
             div.appendChild(para);
 
-            checkZone.appendChild(div);
+            document.getElementById("checkZone").appendChild(div);
         }
     } else {
         desc.innerHTML = singleDescription;
         document.getElementById("contentContainer").appendChild(desc);
     }
-    
+}
+
+
+// This fills the contents of the quiz based on which verbs are selected
+// call this function when the page is loaded or when checkboxes are turned on/off
+// as well as when the new button is pressed
+function loadVerbOptions(page){
+    var selectedVerb;
+    if(page === '103'){
+        selectedVerb = present;
+    }
+    else if(page === '106'){
+        var allVerbs = document.getElementsByClassName("checkBoxes");
+        var selectedTenses = [];
+        for(var i = 0; i < allVerbs.length; i++){
+            if(allVerbs[i].checked){selectedTenses.push(i)}
+        }
+        if(selectedTenses.length > 0){
+            swapTestZone("flex", "", "block");
+            var randomeTense = getRandomInt(0,selectedTenses.length);
+            selectedVerb = verbs106[selectedTenses[randomeTense]]; 
+        }else{
+            swapTestZone("none", emptyMessage, "none");
+            return;
+        }
+    }else{
+        console.log("Page not supported.");
+        return;
+    }
+    // if we are on a supported page or on a supported page with selectedTenses, we reach this page
+    var verbName = selectedVerb[0][0];
+    var index = getRandomInt(1, selectedVerb.length); 
+    var person = getRandomInt(1,selectedVerb[index].length); 
+    var infinitif = selectedVerb[index][0];
+    var pronoun = selectedVerb[0][person];
+    var verb = selectedVerb[index][person];
+    if(startsWithVowel(verb) && person === 1) { pronoun = "j'"; }
+    setContent(verbName, infinitif, pronoun, verb);
+    setButtons(verb, page);
 }
 
 // Returns true if first char of a string is a vowel, false otherwise
@@ -47,54 +81,7 @@ function startsWithVowel(verb) {
     return ("aeéiouAEÉIOU".indexOf(x) != -1); 
 }
 
-// This fills the contents of the test zone based on which verbs are selected
-// call this function when the page is loaded or when checkboxes are turned on/off
-// as well as when the new button is pressed
-
-function loadVerbOptions(page){
-    switch(page){
-        case '103':
-            var index = getRandomInt(1, present.length);
-            var person = getRandomInt(1,present[index].length); 
-            var infinitif = present[index][0];
-            var pronoun = present[0][person];
-            var verb = present[index][person];
-            if(startsWithVowel(verb) && person === 1) { pronoun = "j'"; }
-
-            setContent("Présent", infinitif, pronoun,verb);
-            setButtons(verb, "103");
-
-            break;
-        case '106':
-            var allVerbs = document.getElementsByClassName("checkBoxes");
-            var selectedTenses = [];
-            for(var i = 0; i < allVerbs.length; i++){
-                if(allVerbs[i].checked){selectedTenses.push(i)}
-            }
-            if(selectedTenses.length > 0){
-                showTest();
-                var randomeTense = getRandomInt(0,selectedTenses.length); // random selected tense
-                console.log("Random number = " + randomeTense);
-                var selectedVerb = verbs106[selectedTenses[randomeTense]];
-                var verbName = selectedVerb[0][0];
-                var index = getRandomInt(1, selectedVerb.length); // random verb in selected tense
-                var person = getRandomInt(1,selectedVerb[index].length); 
-                var infinitif = selectedVerb[index][0];
-                var pronoun = selectedVerb[0][person];
-                var verb = selectedVerb[index][person];
-                if(startsWithVowel(verb) && person === 1) { pronoun = "j'"; }
-                setContent(verbName, infinitif, pronoun, verb);
-                setButtons(verb, "106");
-            }
-            else{
-                hideTest();
-            }
-            break;
-        default:
-            console.log("Cannot load verbs for this page: " + page);
-    }
-}
-
+// Returns an int from min(inclusive) to max(exclusive)
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
@@ -110,6 +97,7 @@ function setContent(_tense, _infinitif, _pronoun, _verb){
     document.getElementById("pronoun").innerHTML = _pronoun;
 }
 
+// sets js behavior of all DOM elements
 function setButtons(verb, _class){
     document.getElementById("testButton").onclick = function() { 
         submitVerb(verb);
@@ -125,6 +113,8 @@ function setButtons(verb, _class){
     }
 }
 
+// Compares a given verb with the answer given by the user,
+// changes content of the test zone based on the comparaison
 function submitVerb(verb){
     var answer = document.getElementById("answer").value;
     if(answer.toLowerCase() === verb){
@@ -137,18 +127,18 @@ function submitVerb(verb){
     }
 }
 
-function hideTest(){
-    document.getElementById("answerContainer").style.display = "none";
-    document.getElementById("emptyMessage").innerHTML = "Please select at least one verb tense to begin";
-    document.getElementById("verbTense").style.display = "none";
-    document.getElementById("verbName").style.display = "none";
-    document.getElementById("resetButton").style.display = "none";
+// Sets the style of elements in the test zone
+function swapTestZone(container, message, block){
+    document.getElementById("answerContainer").style.display = container;
+    document.getElementById("emptyMessage").innerHTML = message;
+    document.getElementById("verbTense").style.display = block;
+    document.getElementById("verbName").style.display = block;
+    document.getElementById("resetButton").style.display = block;
 }
 
-function showTest(){
-    document.getElementById("answerContainer").style.display = "flex";
-    document.getElementById("emptyMessage").innerHTML = "";
-    document.getElementById("verbTense").style.display = "block";
-    document.getElementById("verbName").style.display = "block";
-    document.getElementById("resetButton").style.display = "block";
+function appendChar(c){
+    var answer = document.getElementById("answer").value;
+    var newString = answer.concat(c);
+    document.getElementById("answer").value = newString;
+    document.getElementById("answer").focus(); 
 }
