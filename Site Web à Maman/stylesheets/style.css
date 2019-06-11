@@ -384,6 +384,7 @@ h3 {
     display:inline-block;
     height:100%;
     margin-left:30px;
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
 }
 
 #extraChars{
