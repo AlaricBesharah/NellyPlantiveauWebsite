@@ -10,6 +10,7 @@
   <script src="../scripts/verbs.js"></script>
 </head>
 <body>
+    
     <div class="container">
       <div class="banner">
         <img src="../images/usask_usask_black.png" id="logo">
@@ -18,38 +19,62 @@
         <div class="centeredContent">
 
         <h1>FREN 106 - Practice Exercises</h1>
-        <h2>Verb Conjugation</h2>
-        <div id="contentContainer"></div>
-        <div id="checkZone"></div>
-        <div id ="verbTest">
-          <div>
-            <h2 id="emptyMessage"></h2>
-            <p id="verbTense"></p>
-            <p id="verbName"></p>
-          </div>
-          <div id="answerContainer">
-            <p id="pronoun"></p>
+        <div class="contentContainer">
+          <h2>Verb Conjugation</h2>
+          <div id="checkZone"></div>
+          <div id ="verbTest">
             <div>
-            <input id="answer" name="answer" type="text" spellcheck="false" placeholder="Answer here"/>
-            <div id="extraChars">
-                <button class="extraCharButton" onclick="appendChar('é')">é</button>
-                <button class="extraCharButton" onclick="appendChar('è')">è</button>
-                <button class="extraCharButton" onclick="appendChar('ê')">ê</button>
-                <button class="extraCharButton" onclick="appendChar('ë')">ë</button>
-                <button class="extraCharButton" onclick="appendChar('ô')">ô</button>
-                <button class="extraCharButton" onclick="appendChar('û')">û</button>
-                <button class="extraCharButton" onclick="appendChar('ü')">ü</button>
-                <button class="extraCharButton" onclick="appendChar('ç')">ç</button>
+              <h2 id="emptyMessage"></h2>
+              <p id="verbTense"></p>
+              <p id="verbName"></p>
+            </div>
+            <div id="answerContainer">
+              <p id="pronoun"></p>
+            <div>
+              <input id="answer" name="answer" type="text" spellcheck="false" placeholder="Answer here"/>
+              <div id="extraChars">
+                <button class="extraCharButton" onclick="appendChar('é', document.getElementById('answer'))">é</button>
+                <button class="extraCharButton" onclick="appendChar('è', document.getElementById('answer'))">è</button>
+                <button class="extraCharButton" onclick="appendChar('ê', document.getElementById('answer'))">ê</button>
+                <button class="extraCharButton" onclick="appendChar('ë', document.getElementById('answer'))">ë</button>
+                <button class="extraCharButton" onclick="appendChar('ô', document.getElementById('answer'))">ô</button>
+                <button class="extraCharButton" onclick="appendChar('û', document.getElementById('answer'))">û</button>
+                <button class="extraCharButton" onclick="appendChar('ü', document.getElementById('answer'))">ü</button>
+                <button class="extraCharButton" onclick="appendChar('ç', document.getElementById('answer'))">ç</button>
               </div>
-          </div>
+            </div>
             <button id="testButton" class="openButton">answer</button>
             <img src="../images/ok.png" id="ok" class="reaction">
             <img src="../images/nah.png" id="nah" class="reaction">
           </div>
           <button id="resetButton" class="openButton">skip</button>
         </div>
-
       </div>
+      <div class="contentContainer">
+        <h2>Vocabulary quiz</h2>
+        <p>Write what you see in the image.</p>
+        <div id ="vocabTest">
+          <div id="vocabImageDiv">
+            <img src="../images/practice_images/un_portable.jpg" id="vocabImage">
+          </div>
+          <div id="vocabIO">
+              <div class="IOContainer">
+                <input id="grammarAnswer" name="answer" type="text" spellcheck="false" placeholder="Answer here"/>
+                <div id="extraChars">
+                  <button class="extraCharButton" onclick="appendChar('é', document.getElementById('grammarAnswer'))">é</button>
+                  <button class="extraCharButton" onclick="appendChar('è', document.getElementById('grammarAnswer'))">è</button>
+                  <button class="extraCharButton" onclick="appendChar('ê', document.getElementById('grammarAnswer'))">ê</button>
+                  <button class="extraCharButton" onclick="appendChar('ë', document.getElementById('grammarAnswer'))">ë</button>
+                  <button class="extraCharButton" onclick="appendChar('ô', document.getElementById('grammarAnswer'))">ô</button>
+                  <button class="extraCharButton" onclick="appendChar('û', document.getElementById('grammarAnswer'))">û</button>
+                  <button class="extraCharButton" onclick="appendChar('ü', document.getElementById('grammarAnswer'))">ü</button>
+                  <button class="extraCharButton" onclick="appendChar('ç', document.getElementById('grammarAnswer'))">ç</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>createVerbOptions(verbs106);</script>
     <script>loadVerbOptions("106");</script>
 </body>

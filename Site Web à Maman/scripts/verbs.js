@@ -10,7 +10,7 @@ function createVerbOptions(verbList){
 
     if(verbList.length > 1){
         desc.innerHTML = multipleDescription;
-        document.getElementById("contentContainer").appendChild(desc);
+        document.getElementById("checkZone").appendChild(desc);
 
         for(var i = 0; i < verbList.length; i++){
             var div = document.createElement("div");
@@ -32,7 +32,7 @@ function createVerbOptions(verbList){
         }
     } else {
         desc.innerHTML = singleDescription;
-        document.getElementById("contentContainer").appendChild(desc);
+        document.getElementsByClassName("contentContainer").appendChild(desc);
     }
 }
 
@@ -139,9 +139,9 @@ function swapTestZone(container, message, block){
     document.getElementById("extraChars").style.display = container;
 }
 
-function appendChar(c){
-    var answer = document.getElementById("answer").value;
+function appendChar(c, input){
+    var answer = input.value;
     var newString = answer.concat(c);
-    document.getElementById("answer").value = newString;
-    document.getElementById("answer").focus(); 
+    input.value = newString;
+    input.focus(); 
 }
