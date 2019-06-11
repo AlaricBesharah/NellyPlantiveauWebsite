@@ -22,17 +22,31 @@
         <div id="contentContainer"></div>
         <div id="checkZone"></div>
         <div id ="verbTest">
-          <h2 id="emptyMessage"></h2>
-          <p id="verbTense"></p>
-          <p id="verbName"></p>
+          <div>
+            <h2 id="emptyMessage"></h2>
+            <p id="verbTense"></p>
+            <p id="verbName"></p>
+          </div>
           <div id="answerContainer">
             <p id="pronoun"></p>
+            <div>
             <input id="answer" name="answer" type="text" spellcheck="false" placeholder="Answer here"/>
+            <div id="extraChars">
+                <button class="extraCharButton" onclick="appendChar('é')">é</button>
+                <button class="extraCharButton" onclick="appendChar('è')">è</button>
+                <button class="extraCharButton" onclick="appendChar('ê')">ê</button>
+                <button class="extraCharButton" onclick="appendChar('ë')">ë</button>
+                <button class="extraCharButton" onclick="appendChar('ô')">ô</button>
+                <button class="extraCharButton" onclick="appendChar('û')">û</button>
+                <button class="extraCharButton" onclick="appendChar('ü')">ü</button>
+                <button class="extraCharButton" onclick="appendChar('ç')">ç</button>
+              </div>
+          </div>
             <button id="testButton" class="openButton">answer</button>
             <img src="../images/ok.png" id="ok" class="reaction">
             <img src="../images/nah.png" id="nah" class="reaction">
           </div>
-          <div id="extraChars">
+          <!-- <div id="extraChars">
             <button class="extraCharButton" onclick="appendChar('é')">é</button>
             <button class="extraCharButton" onclick="appendChar('è')">è</button>
             <button class="extraCharButton" onclick="appendChar('ê')">ê</button>
@@ -41,7 +55,7 @@
             <button class="extraCharButton" onclick="appendChar('û')">û</button>
             <button class="extraCharButton" onclick="appendChar('ü')">ü</button>
             <button class="extraCharButton" onclick="appendChar('ç')">ç</button>
-          </div>
+          </div> -->
           
           <button id="resetButton" class="openButton">skip</button>
         </div>

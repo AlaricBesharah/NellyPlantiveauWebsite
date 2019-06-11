@@ -136,7 +136,7 @@ function swapTestZone(container, message, block){
     document.getElementById("verbTense").style.display = block;
     document.getElementById("verbName").style.display = block;
     document.getElementById("resetButton").style.display = block;
-    document.getElementById("extraChars").style.display = block;
+    document.getElementById("extraChars").style.display = container;
 }
 
 function appendChar(c){
