@@ -70,7 +70,9 @@ function loadVerbOptions(page){
     var infinitif = selectedVerb[index][0];
     var pronoun = selectedVerb[0][person];
     var verb = selectedVerb[index][person];
-    if(startsWithVowel(verb) && person === 1) { pronoun = "j'"; }
+    if(startsWithVowel(verb) && person === 1 && pronoun.charAt(0)!='(') { 
+        pronoun = "j'"; 
+    }
     setContent(verbName, infinitif, pronoun, verb);
     setButtons(verb, page);
 }
@@ -134,6 +136,7 @@ function swapTestZone(container, message, block){
     document.getElementById("verbTense").style.display = block;
     document.getElementById("verbName").style.display = block;
     document.getElementById("resetButton").style.display = block;
+    document.getElementById("extraChars").style.display = block;
 }
 
 function appendChar(c){

@@ -208,7 +208,7 @@ var passéComposé = [
 ];
 
 var imperatif = [
-    ["Imperatif","(tu)","(nous)","(vous)"],
+    ["Impératif","(tu)","(nous)","(vous)"],
     ["aimer","aime","aimons","aimez"],
     ["adorer","adore","adorons","adorez"],
     ["appeler","appelle","appelons","appellez"],
