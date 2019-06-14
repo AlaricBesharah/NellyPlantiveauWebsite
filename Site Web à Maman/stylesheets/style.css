@@ -457,13 +457,18 @@ h3 {
 }
 
 #vocabIO{
-    /* background:cyan; */
     display:block;
     float:right;
     margin-right:10%;
     text-align: center;
     width:40%;
     height:300px;
+}
+
+.IOContainer {
+    width:200px;
+    text-align:center;
+    height:auto;
 }
 
 
