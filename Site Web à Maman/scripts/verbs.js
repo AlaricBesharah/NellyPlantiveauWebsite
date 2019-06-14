@@ -136,12 +136,16 @@ function swapTestZone(container, message, block){
     document.getElementById("verbTense").style.display = block;
     document.getElementById("verbName").style.display = block;
     document.getElementById("resetButton").style.display = block;
-    // document.getElementById("extraChars").style.display = container;
 }
 
 function appendChar(c, input){
-    var answer = input.value;
+    var DOMElement = document.getElementById(input);
+    // var answer = input.value;
+    // var newString = answer.concat(c);
+    // input.value = newString;
+    // input.focus(); 
+    var answer = DOMElement.value;
     var newString = answer.concat(c);
-    input.value = newString;
-    input.focus(); 
+    DOMElement.value = newString;
+    DOMElement.focus();
 }
