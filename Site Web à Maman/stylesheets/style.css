@@ -390,10 +390,11 @@ h3 {
     display:inline-block;
     height:60px;
     margin-left:30px;
+    transform: translateY(5px);
     transition:cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
 }
 
-#extraChars{
+.extraChars{
     margin:0;
     padding:0;
     width:80%;
@@ -401,8 +402,6 @@ h3 {
     margin:auto;
     margin-top:15px;
     display:flex;
-    align-items: center;
-    justify-content: center;
 }
 
 
@@ -483,7 +482,7 @@ h3 {
 
 @media only screen and (max-width: 815px) {
     .reaction{
-        height:50%;
+        height:40px;
         transform: translateY(15px);
     }
 }
@@ -499,9 +498,9 @@ h3 {
         left:-35px; 
     }
 
-    #pronoun {
+    /* #pronoun {
         font-size:12pt;
-    }
+    } */
 
     #answer{
         margin-left:10px;
@@ -515,9 +514,8 @@ h3 {
     }
 
     .reaction{
-        height:50%;
-        margin-left:-100px;
-        transform: translateY(3px);
+        margin-left:-70px;
+        transform: translateY(0px);
     }
 
     #testButton{
