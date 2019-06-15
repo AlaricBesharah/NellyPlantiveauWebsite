@@ -1,9 +1,13 @@
 var singleDescription = "Temporary FREN 103 verb practise description.";
 var multipleDescription = "Select all verbs tenses below which you want to practise";
-var emptyMessage = "Please select at least one verb tense to begin";
+var emptyMessage = "Select at least one verb tense to begin";
 
-// Create the HTML elements for the verb quiz based on 
-// which list of verbs you pass as parameters
+/**
+ * Takes a list of verbs and creates all the appropriate html elements
+ * and associated behavior required for the test section of that list. 
+ * 
+ * @param verbList a list of verbs, for now either verbs103 or verbs106
+ */
 function createVerbOptions(verbList){
     var desc = document.createElement("p");
     desc.className = "description";
@@ -37,9 +41,13 @@ function createVerbOptions(verbList){
 }
 
 
-// This fills the contents of the quiz based on which verbs are selected
-// call this function when the page is loaded or when checkboxes are turned on/off
-// as well as when the new button is pressed
+/** This fills the contents of the quiz based on which verbs are selected
+ * call this function when the page is loaded or when checkboxes are turned on/off
+ * as well as when the new button is pressed
+ * 
+ * @param page - A string, handles either '103' or '106', describing which
+ * class is being displayed on the page
+ * */
 function loadVerbOptions(page){
     var selectedVerb;
     if(page === '103'){
@@ -52,11 +60,11 @@ function loadVerbOptions(page){
             if(allVerbs[i].checked){selectedTenses.push(i)}
         }
         if(selectedTenses.length > 0){
-            swapTestZone("flex", "", "block");
+            swapTestZone(false);
             var randomeTense = getRandomInt(0,selectedTenses.length);
             selectedVerb = verbs106[selectedTenses[randomeTense]]; 
         }else{
-            swapTestZone("none", emptyMessage, "none");
+            swapTestZone(true);
             return;
         }
     }else{
@@ -77,18 +85,31 @@ function loadVerbOptions(page){
     setButtons(verb, page);
 }
 
-// Returns true if first char of a string is a vowel, false otherwise
-function startsWithVowel(verb) {
-    var x = verb.charAt(0);
+/** 
+ * Determines if a string starts with a vowel. Returns true if this 
+ * condition is met, false otherwise.
+ * 
+ * @param _string a string
+*/
+function startsWithVowel(_string) {
+    var x = _string.charAt(0);
     return ("aeéiouAEÉIOU".indexOf(x) != -1); 
 }
 
-// Returns an int from min(inclusive) to max(exclusive)
+/**
+ * Returns a random integer in a specified range.
+ * 
+ * @param min minimum value, inclusive
+ * @param max maximum value, exclusive
+ */
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-// sets all the html of the verbTest section
+/**
+ * Helper function to set the values of all elements in the verb test
+ * section to default values.  
+ */
 function setContent(_tense, _infinitif, _pronoun, _verb){
     document.getElementById("ok").style.display = "none";
     document.getElementById("nah").style.display = "none";
@@ -99,7 +120,15 @@ function setContent(_tense, _infinitif, _pronoun, _verb){
     document.getElementById("pronoun").innerHTML = _pronoun;
 }
 
-// sets js behavior of all DOM elements
+/**
+ * Sets the behavior of the 'ANSWER' and 'SKIP' buttons as well as the 
+ * enter button when in the input text field. The answer button and the 
+ * enter key both call the submitVerb(verb) function and the skip button 
+ * reloads the verb option.  
+ * 
+ * @param verb the verb which the answer button and the enter key check for
+ * @param _class the class for which the verbs must be reloaded
+ */
 function setButtons(verb, _class){
     document.getElementById("testButton").onclick = function() { 
         submitVerb(verb);
@@ -115,8 +144,14 @@ function setButtons(verb, _class){
     }
 }
 
-// Compares a given verb with the answer given by the user,
-// changes content of the test zone based on the comparaison
+/**
+ * Checks if the value of the answer text input field matches the answer
+ * provided. If they do match the success symbol is displayed and the text 
+ * on the skip button is switched to 'next'. Otherwise the failure 
+ * symbol is displayed. 
+ * 
+ * @param verb a string, the correct answer against which the answer is compared 
+ */
 function submitVerb(verb){
     var answer = document.getElementById("answer").value;
     if(answer.toLowerCase() === verb){
@@ -129,21 +164,42 @@ function submitVerb(verb){
     }
 }
 
-// Sets the style of elements in the test zone
-function swapTestZone(container, message, block){
-    document.getElementById("answerContainer").style.display = container;
-    document.getElementById("emptyMessage").innerHTML = message;
-    document.getElementById("verbTense").style.display = block;
-    document.getElementById("verbName").style.display = block;
-    document.getElementById("resetButton").style.display = block;
+/**
+ * Sets the styling of the test zone. Used when a verb tense is selected 
+ * to update what is displayed on the page for the user. 
+ * 
+ * @param hide boolean, true if the content is to be hidden, false otherwise.
+ */
+function swapTestZone(hide){
+    var _container, _message, _block;
+    if(hide){
+        _container = 'none';
+        _message = emptyMessage;
+        _block = 'none';
+    }
+    else{
+        _container = 'flex';
+        _message = '';
+        _block = 'block';
+    }
+    document.getElementById("answerContainer").style.display = _container;
+    document.getElementById("emptyMessage").innerHTML = _message;
+    document.getElementById("verbTense").style.display = _block;
+    document.getElementById("verbName").style.display = _block;
+    document.getElementById("resetButton").style.display = _block;
 }
 
+/**
+ * Appends a given character to the end of the value of a given 
+ * input html element. Used for the extra character buttons to add
+ * the char into specified input fields. 
+ * 
+ * @param c the character to be appended to the existing value
+ * @param input ID of the input html element onto which the char is 
+ * is to be appended
+ */
 function appendChar(c, input){
     var DOMElement = document.getElementById(input);
-    // var answer = input.value;
-    // var newString = answer.concat(c);
-    // input.value = newString;
-    // input.focus(); 
     var answer = DOMElement.value;
     var newString = answer.concat(c);
     DOMElement.value = newString;

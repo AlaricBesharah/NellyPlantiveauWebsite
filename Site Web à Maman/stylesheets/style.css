@@ -139,10 +139,11 @@ h3 {
     overflow: hidden;
     background-color:white;
     color:#333;
-    border-right: 2px solid #F06449;
-    border-bottom: 2px solid #F06449;
-    border-left: 2px solid #F06449;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.04), 0 3px 6px rgba(0,0,0,0.23);
+    border:2px solid #F06449;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top:none;
+    /* box-shadow: 0 3px 6px rgba(0,0,0,0.04), 0 3px 6px rgba(0,0,0,0.23); */
 }
 
 .content p{
