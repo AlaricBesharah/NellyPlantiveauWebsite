@@ -453,8 +453,8 @@ h3 {
 #vocabImageDiv{
     display:block;
     float:left;
-    margin-left:10%;
-    width:40%;
+    margin-left:0px;
+    width:50%;
     height:300px;
 }
 
@@ -465,18 +465,34 @@ h3 {
 }
 
 #vocabIO{
+    margin:auto;
     display:block;
     float:right;
-    margin-right:10%;
     text-align: center;
-    width:40%;
+    margin-left:0px;
+    width:50%;
     height:300px;
+}
+
+#vocabButton{
+    margin:auto;
+    margin-top:20px;
+    display:block;
+    background:#42aaf4;
+    color:white;
+    border-radius:5px;
+    box-shadow: 0px 5px 0px 0px #3195dd;
 }
 
 .IOContainer {
     width:350px;
     height:auto;
     text-align:center;
+}
+
+#vocabIO .IOContainer{
+    margin:auto;
+    display:block;
 }
 
 
