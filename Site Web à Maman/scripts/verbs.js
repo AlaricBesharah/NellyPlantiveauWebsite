@@ -41,7 +41,7 @@ function createVerbOptions(verbList){
 }
 
 
-/** This fills the contents of the quiz based on which verbs are selected
+/** This fills the contents of the verb quiz based on which verbs are selected
  * call this function when the page is loaded or when checkboxes are turned on/off
  * as well as when the new button is pressed
  * 
@@ -60,18 +60,20 @@ function loadVerbOptions(page){
             if(allVerbs[i].checked){selectedTenses.push(i)}
         }
         if(selectedTenses.length > 0){
-            swapTestZone(false);
+            hideTestZone(false);
             var randomeTense = getRandomInt(0,selectedTenses.length);
             selectedVerb = verbs106[selectedTenses[randomeTense]]; 
         }else{
-            swapTestZone(true);
+            hideTestZone(true);
             return;
         }
     }else{
         console.log("Page not supported.");
         return;
     }
-    // if we are on a supported page or on a supported page with selectedTenses, we reach this page
+    /**if the user is on a supported page or on a supported page with selectedTenses,
+     * we reach this code which sets the content of the test area.
+    */
     var verbName = selectedVerb[0][0];
     var index = getRandomInt(1, selectedVerb.length); 
     var person = getRandomInt(1,selectedVerb[index].length); 
@@ -170,7 +172,7 @@ function submitVerb(verb){
  * 
  * @param hide boolean, true if the content is to be hidden, false otherwise.
  */
-function swapTestZone(hide){
+function hideTestZone(hide){
     var _container, _message, _block;
     if(hide){
         _container = 'none';

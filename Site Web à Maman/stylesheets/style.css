@@ -379,16 +379,16 @@ h3 {
     position: absolute;
     bottom:10px;
     right:20px;
-    box-shadow: 0px 5px 0px 0px #ff7f4c;
+    box-shadow: 0px 5px 0px 0px #F06449;
 }
 
 #resetButton:hover{
-    box-shadow: 0px 5px 0px 0px #F06449;
+    box-shadow: 0px 5px 0px 0px rgb(211, 80, 54);
 }
 
 #resetButton:active{
     background-color:#ff7f4c;
-    box-shadow: 0px 2px 0px 0px #F06449;
+    box-shadow: 0px 2px 0px 0px rgb(211, 80, 54);
 }
 
 .reaction{
@@ -543,7 +543,7 @@ h3 {
 
     #testButton{
         position: absolute;
-        left:0;
+        right:100px;
         bottom:10px;
     }
   }
