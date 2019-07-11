@@ -55,6 +55,18 @@ introHeader{
     box-shadow: 0px 5px 0px 0px #ff6b08; 
 }
 
+.inactiveButton{
+    background:rgba(200,200,200,1);
+    box-shadow: 0px 5px 0px 0px #888;
+    color:#888; 
+}
+
+.inactiveButton:hover{
+    background:rgba(200,200,200,1);
+    box-shadow: 0px 5px 0px 0px #888;
+    color:#888; 
+}
+
 #paws{
     cursor: pointer;
     position: absolute;
@@ -69,9 +81,6 @@ introHeader{
     width:100%;
     max-width: 400px;
     min-width: 200px;
-    /* background: white; */
     padding:30px;
     border-radius: 20px;
-    /* border:solid 2px rgba(50,50,50, 0.2); */
-    /* box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3) */
 }
