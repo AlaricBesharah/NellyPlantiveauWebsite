@@ -4,14 +4,18 @@ html{
     margin:0;
     padding:0;
     background: whitesmoke; 
+    background: #fe8c00;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f83600, #fe8c00);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f83600, #fe8c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 #logo{
     height:80px;
     width:auto;
     display: block;
-    margin:25vh auto auto auto;
-    padding-bottom:20px;
+    /* margin:25vh auto auto auto; */
+    /* padding-bottom:20px; */
 }
 
 a{
@@ -21,7 +25,7 @@ a{
 introHeader{
     display:block;
     max-width:400px;
-    padding-top:10px;
+    padding:60px 0 30px 0;
     text-align: center;
     margin:auto;
     font-family: 'Lato', sans-serif;
@@ -76,10 +80,16 @@ introHeader{
 }
 
 .container{
+    background: white;
     margin:auto;
     width:auto;
     max-width: 400px;
     min-width: 200px;
-    padding:30px;
+    padding:80px 80px 80px 80px;
+    height:auto;
     border-radius: 20px;
+    position: relative;
+    top:50vh;
+    transform: translateY(-50%);
+    box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.3);
 }
