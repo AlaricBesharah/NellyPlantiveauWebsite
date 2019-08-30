@@ -1,0 +1,351 @@
+
+body {
+    margin:0;
+    padding:0;
+    font-family: 'Titillium Web', sans-serif;
+    background:#eee;
+}
+
+.bg-image {
+    /* The image used */
+    background-image: url("../Images/grosparis.jpg");
+    
+  
+    /* Add the blur effect */
+    filter: blur(3px) grayscale(60%);
+  
+    /* Full height */
+    height: 100%; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+::selection {
+    color:white;
+    background:#F06449; 
+}
+::-moz-selection {
+    color: white;
+    background:#F06449; 
+}
+
+button:focus {
+    outline:0;
+}
+
+.container {
+    /* transform: translateY(-100vh); */
+    position:relative;
+    padding-bottom:40px;
+    width:100%;
+    max-width: 1200px;
+    margin:auto;
+}
+
+h1 {
+    text-align:center;
+    color: #333;
+    font-family: 'Fredoka One', cursive;
+}
+
+
+.openButton {
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left:10px;
+    margin-top:15px;
+    margin-bottom:15px;
+    border:none;
+    height:40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    padding-left:20px;
+    padding-right:20px;
+    background:#42aaf4;
+    color:white;
+    border-radius:5px;
+    box-shadow: 0px 5px 0px 0px #3195dd;
+}
+
+.openButton:hover{
+    background:#57b9ff;
+    box-shadow: 0px 5px 0px 0px #167cc5;
+}
+
+.openButton:active {
+    box-shadow: 0px 2px 0px 0px #167cc5;
+    transform: translateY(3px);
+}
+
+.checkRow {
+    text-align: left;
+    margin:auto;
+    color:white;
+    width:90%;
+    max-width:750px;
+    height:30px;
+}
+
+#siteDescription{
+    width:90%;
+    max-width: 500px;
+    text-align: center;
+    display:block;
+    margin:auto;
+    margin:30px auto 30px auto;
+}
+
+.checkRow input{
+    position: relative;
+    top:12px;
+    width:20px;
+    height:20px;
+    -webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	padding: 9px;
+}
+
+.checkRow input:checked{
+    background-color: #42aaf4;
+	border: 1px solid #cacece;
+	color: #99a1a7;
+}
+
+.checkRow input:checked::after {
+	content:" ";
+    position: absolute;
+    height:3px;
+    width:5px;
+	top: 9px;
+    left: 3px;
+    transform: rotate(45deg);
+	background-color: white;
+}
+
+.checkRow input:checked::before {
+	content:" ";
+    position: absolute;
+    height:3px;
+    width:12px;
+	top: 8px;
+    left: 5px;
+    transform: rotate(-45deg);
+	background-color: white;
+}
+
+.contentContainer{
+    width:100%;
+    margin-bottom:120px;
+}
+.contentContainer p{
+    /* margin-left:5%; */
+    color: #555;
+}
+
+#emptyMessage{
+    text-align:center;
+    margin-left:-30px;
+}
+
+
+.checkTag{
+    font-size:110%;
+    margin-left:0px;
+    color:black;
+    text-transform: capitalize;
+    position:relative;
+    top:-37px;
+    left:40px;
+}
+
+#verbTest{
+    background:rgba(255,255,255, 0.9);
+    display:block;
+    position:relative;
+    border-radius: 20px;
+    width:90%;
+    max-width: 750px;
+    padding-top:30px;
+    padding-bottom:30px;
+    padding-left:30px;
+    margin:auto;
+    margin-top:50px;
+    margin-bottom:70px;
+    transition: ease 0.3s;
+    /* border:2px solid rgba(139, 139, 139, 0.1); */
+}
+
+#verbTest h2{
+    color:#ff7f4c;
+}
+
+#verbName, #verbTense{
+    display: block;
+    position: relative;
+    text-align: left;
+    margin:0;
+    padding-left:30px;
+    width:100%;
+    display: inline-block;
+    font-size:25pt;
+    text-transform:capitalize;
+}
+
+#pronoun {
+    display: inline-block;
+    margin-top:15px;
+    font-size:20pt;
+    text-transform:capitalize;
+}
+
+#answer, #grammarAnswer{
+    display:inline-block;
+    padding:10px;
+    font-size:20pt;
+    font-family: 'Titillium Web', sans-serif;
+    border:1px solid dodgerblue;
+}
+
+#verbName::before{
+    content:"Verb: ";
+    font-size:20pt;
+    color:#F06449;
+}
+
+#verbTense::before{
+    content:"Tense: ";
+    font-size:20pt;
+    color:#F06449;
+    
+}
+
+#answerContainer{
+    display: flex;
+    height:auto;
+    margin-top:30px;
+    margin-left:30px;
+    padding-bottom:30px;
+}
+
+#resetButton{
+    display:block;
+    background-color:#ff7f4c;
+    position: absolute;
+    bottom:10px;
+    right:20px;
+    box-shadow: 0px 5px 0px 0px #F06449;
+}
+
+#resetButton:hover{
+    box-shadow: 0px 5px 0px 0px rgb(211, 80, 54);
+}
+
+#resetButton:active{
+    background-color:#ff7f4c;
+    box-shadow: 0px 2px 0px 0px rgb(211, 80, 54);
+}
+
+.reaction{
+    display:inline-block;
+    height:60px;
+    margin-left:30px;
+    transform: translateY(5px);
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+.extraChars{
+    margin:0;
+    padding:0;
+    width:80%;
+    text-align: center;
+    margin:auto;
+    margin-top:15px;
+    display:flex;
+}
+
+
+.extraCharButton {
+    display:inline-block;
+    padding: 5px 10px;
+    margin: 0 auto;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color:#ff7f4c;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 6px rgb(238, 91, 62);
+  }
+  
+.extraCharButton:hover {
+    background-color: #ff9a71;
+}
+  
+.extraCharButton:active {
+    background-color: rgb(255, 137, 113);
+    box-shadow: 0 3px rgb(238, 91, 62);
+    transform: translateY(3px);
+}
+
+.IOContainer {
+    width:350px;
+    height:auto;
+    text-align:center;
+}
+
+#ok, #nah{
+    display:none;
+}
+
+@media only screen and (max-width: 815px) {
+    .reaction{
+        height:40px;
+        transform: translateY(15px);
+    }
+}
+
+@media only screen and (max-width: 655px) {
+    #verbTest{
+        padding-bottom:100px;
+    }
+
+    #extraChars{
+        width:100%;
+        margin:auto;
+        left:-35px; 
+    }
+
+    #pronoun {
+        margin-top:-1px;
+        /* transform:translateY(-30px); */
+        transform:translateX(60px);
+    }
+
+    #answer{
+        margin-left:10px;
+        margin-right:0px;
+        justify-content: center;
+        width:150px;
+        padding:5px;
+        font-size:15pt;
+        font-family: 'Titillium Web', sans-serif;
+        border:1px solid dodgerblue;
+    }
+
+    .reaction{
+        margin-left:-70px;
+        transform: translateY(0px);
+    }
+
+    #testButton{
+        position: absolute;
+        right:100px;
+        bottom:10px;
+    }
+  }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link id="pagestyle" rel="stylesheet" href="Stylesheets/style.css">
+  <link rel="stylesheet" href="Stylesheets/grid.css">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+  <script src="scripts/data.js"></script>
+  <script src="scripts/verbs.js"></script>
+</head>
+<body>
+    
+  <!-- <div class="bg-image"></div> -->
+  <div class="container"> 
+    <div class="centeredContent">
+        <h1>French Conjugation Practice</h1>
+        <div class="contentContainer">
+          <div id="checkZone"><p id="siteDescription">Select all the verb tenses which you want to include in your practice. Changing your selection will update the workspace.</p></div>
+          <div id ="verbTest">
+            <div>
+              <h2 id="emptyMessage"></h2>
+              <p id="verbTense"></p>
+              <p id="verbName"></p>
+
+            </div>
+            <div id="answerContainer">
+              <p id="pronoun"></p>
+              <div class="IOContainer">
+                <input id="answer" name="answer" type="text" spellcheck="false" placeholder="Answer here"/>
+                <div class="extraChars" >
+                  <button class="extraCharButton" onclick="appendChar('é', 'answer')">é</button>
+                  <button class="extraCharButton" onclick="appendChar('è', 'answer')">è</button>
+                  <button class="extraCharButton" onclick="appendChar('ê', 'answer')">ê</button>
+                  <button class="extraCharButton" onclick="appendChar('ë', 'answer')">ë</button>
+                  <button class="extraCharButton" onclick="appendChar('ô', 'answer')">ô</button>
+                  <button class="extraCharButton" onclick="appendChar('û', 'answer')">û</button>
+                  <button class="extraCharButton" onclick="appendChar('ü', 'answer')">ü</button>
+                  <button class="extraCharButton" onclick="appendChar('ç', 'answer')">ç</button>
+                </div>
+            </div>
+            <button id="testButton" class="openButton" onclick="">answer</button>
+            <img src="Images/ok.png" id="ok" class="reaction">
+            <img src="Images/nah.png" id="nah" class="reaction">
+          </div>
+          <button id="resetButton" class="openButton">skip</button>
+          </div>
+      </div>
+    </div>
+  </div>
+    <script>createVerbOptions(verbs106);</script>
+    <script>loadVerbOptions("106");</script>
+</body>

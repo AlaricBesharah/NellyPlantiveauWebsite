@@ -1,0 +1,26 @@
+#boggs{
+    margin:auto;
+    display: grid;
+    width: 92%;
+    height: 350px;
+    border-radius:20px;
+    border:2px solid rgba(0, 0, 0, 0.07);
+    grid-template-areas: 
+            ". . ."
+            ". top top"
+            " . answer  bubs";
+    grid-template-rows: 0px 200px 1fr;
+    grid-template-columns: 0px 350px 1fr;
+}
+
+#boggs > .top {
+    grid-area: top;
+}
+
+#boggs > .answer{
+    grid-area: answer;
+}
+
+#boggs > .bubs{
+    grid-area: bubs;
+}

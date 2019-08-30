@@ -5,11 +5,10 @@ html{
 }
 
 nav{
-    position: relative;
     background: #fe8c00;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #f83600, #fe8c00);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #f83600, #fe8c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    width:180px;
+    width:130px;
     height:100vh;
     position:fixed;
     top:0;
@@ -20,10 +19,12 @@ nav{
 }
 
 #iconDiv{
-    margin-top:20vh;
+    margin-top:50vh;
+    transform: translateY(-50%);
     display:flex;
+    height:40vh;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 nav h2{
@@ -34,8 +35,15 @@ nav h2{
 
 #wrapper{
     width:calc(100% - 180px);
-    min-height:200vh;
+    /* background:pink; */
+    min-height: 100vh;
     margin-left:180px;
+}
+#wrapper img{
+    display: block;
+    margin:auto;
+    height:200px;
+    width:auto;
 }
 
 .icon{
@@ -43,8 +51,8 @@ nav h2{
     position: relative;
     text-align: center;
     font-size:13pt;
-    width:25%;
-    margin:5vh auto 5vh auto;
+    width:35%;
+    margin:0 auto 0 auto;
 }
 
 .icon:hover .iconDescription{
@@ -57,7 +65,7 @@ nav h2{
     border-right-color:rgba(255,255,255, 1); 
 }
 
-.icon p{
+.iconDescription{
     text-transform: uppercase;
     display:block;
     color:rgba(50,50,50, 0);
