@@ -303,6 +303,13 @@ h1 {
     display:none;
 }
 
+#scoreCounter{
+    color:black;
+    position:absolute;
+    top:10px;
+    right:30px;
+}
+
 @media only screen and (max-width: 815px) {
     .reaction{
         height:40px;

@@ -59,29 +59,21 @@ function createVerbOptions(verbList){
  * */
 function loadVerbOptions(page){
     var selectedVerb;
-    if(page === '103'){
-        selectedVerb = present;
+    
+    var allVerbs = document.getElementsByClassName("checkBoxes");
+    var selectedTenses = [];
+    for(var i = 0; i < allVerbs.length; i++){
+        if(allVerbs[i].checked){selectedTenses.push(i)}
     }
-    else if(page === '106'){
-        var allVerbs = document.getElementsByClassName("checkBoxes");
-        var selectedTenses = [];
-        for(var i = 0; i < allVerbs.length; i++){
-            if(allVerbs[i].checked){selectedTenses.push(i)}
-        }
-        if(selectedTenses.length > 0){
-            hideTestZone(false);
-            var randomeTense = getRandomInt(0,selectedTenses.length);
-            selectedVerb = verbs106[selectedTenses[randomeTense]]; 
-        }else{
-            hideTestZone(true);
-            return;
-        }
+    if(selectedTenses.length > 0){
+        hideTestZone(false);
+        var randomeTense = getRandomInt(0,selectedTenses.length);
+        selectedVerb = verbs106[selectedTenses[randomeTense]]; 
     }else{
+        hideTestZone(true);
         return;
     }
-    /**if the user is on a supported page or on a supported page with selectedTenses,
-     * we reach this code which sets the content of the test area.
-    */
+    
     var verbName = selectedVerb[0][0];
     var index = getRandomInt(1, selectedVerb.length); 
     var person = getRandomInt(1,selectedVerb[index].length); 
@@ -94,6 +86,13 @@ function loadVerbOptions(page){
     setContent(verbName, infinitif, pronoun, verb);
     setButtons(verb, page);
 }
+
+function loadScore(){
+    if(localStorage.getItem('score') != null){
+        document.getElementById('scoreCounter').innerHTML = localStorage.getItem('score');
+    }
+}
+
 
 /** 
  * Determines if a string starts with a vowel. Returns true if this 
@@ -219,6 +218,9 @@ function appendChar(c, input){
  * @param answer boolean true if the user was correct 
  */
 function setScore(answer){
+    
+    var score = document.getElementById('scoreCounter');
+    
     // check if score hasn't been initialized and set to 0 if not.
     if(window.localStorage.getItem('score') === null){
         window.localStorage.setItem('score', '0');
@@ -229,5 +231,15 @@ function setScore(answer){
     }else{
         window.localStorage.setItem('score', '0');
     }
-    console.log(window.localStorage.getItem('score'));
+    score.innerHTML = window.localStorage.getItem('score');
 }
+
+
+
+
+
+
+
+
+
+

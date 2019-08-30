@@ -12,10 +12,11 @@
   <script src="scripts/verbs.js"></script>
 </head>
 <body>
-    
+  <p id="scoreCounter">score here</p>  
   <!-- <div class="bg-image"></div> -->
   <div class="container"> 
     <div class="centeredContent">
+        
         <h1>French Conjugation Practice</h1>
         <div class="contentContainer">
           <div id="checkZone"><p id="siteDescription">Select all the verb tenses which you want to include in your practice. Changing your selection will update the workspace.</p></div>
@@ -50,6 +51,7 @@
       </div>
     </div>
   </div>
+    <script>loadScore();</script>
     <script>createVerbOptions(verbs106);</script>
     <script>loadVerbOptions("106");</script>
 </body>
