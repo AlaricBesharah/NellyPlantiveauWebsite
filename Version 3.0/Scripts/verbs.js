@@ -1,7 +1,17 @@
+/**
+ * Hello, this js files handles everything to do with the VERBS..
+ * 
+ */
+
 var singleDescription = "Temporary FREN 103 verb practise description.";
 var multipleDescription = "Select all the verb tenses which you want to include in your practice. Chaning your selection will update the workspace.";
 var emptyMessage = "Select at least one verb tense to begin";
 var currentVerb;
+var guessTag = false;
+
+
+// TODO use guess tag to check if the score or display need to be updated. 
+
 
 /**
  * Takes a list of verbs and creates all the appropriate html elements
@@ -13,6 +23,8 @@ function createVerbOptions(verbList){
     var desc = document.createElement("p");
     desc.className = "description";
 
+    // This event listener is added seperately from the buttons
+    // otherwise it breaks the score increase. 
     document.getElementById("answer")
     .addEventListener("keyup", function(event) {
         event.preventDefault();
@@ -32,7 +44,7 @@ function createVerbOptions(verbList){
             var input = document.createElement("input");
             input.className = "checkBoxes";
             input.type = "checkbox";
-            input.onchange = function(){loadVerbOptions("106");};
+            input.onchange = function(){loadVerbOptions("106");}
 
             var para = document.createElement("p");
             para.innerHTML = verbList[i][0][0];
@@ -194,6 +206,7 @@ function hideTestZone(hide){
     document.getElementById("verbTense").style.display = _block;
     document.getElementById("verbName").style.display = _block;
     document.getElementById("resetButton").style.display = _block;
+    document.getElementById("scoreContainer").style.display = _block;
 }
 
 /**
@@ -220,7 +233,7 @@ function appendChar(c, input){
 function setScore(answer){
     
     var score = document.getElementById('scoreCounter');
-    
+
     // check if score hasn't been initialized and set to 0 if not.
     if(window.localStorage.getItem('score') === null){
         window.localStorage.setItem('score', '0');
@@ -232,6 +245,9 @@ function setScore(answer){
         window.localStorage.setItem('score', '0');
     }
     score.innerHTML = window.localStorage.getItem('score');
+    if(parseInt(localStorage.getItem('score')) > 0){
+        document.getElementById('scoreContainer').style.display = 'block';
+    }
 }
 
 
