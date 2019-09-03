@@ -19,12 +19,13 @@ var guessTag = false;
  * 
  * @param verbList a list of verbs, for now either verbs103 or verbs106
  */
-function createVerbOptions(verbList){
+function createVerbOptions(verbList, groupList){
     var desc = document.createElement("p");
     desc.className = "description";
 
     // This event listener is added seperately from the buttons
     // otherwise it breaks the score increase. 
+    // This could be moved somewhere better in the future if I were more motivated, but it lives here for now. 
     document.getElementById("answer")
     .addEventListener("keyup", function(event) {
         event.preventDefault();
@@ -37,6 +38,7 @@ function createVerbOptions(verbList){
         desc.innerHTML = multipleDescription;
         // document.getElementById("checkZone").appendChild(desc);
 
+        // Create a check box for each verb tense
         for(var i = 0; i < verbList.length; i++){
             var div = document.createElement("div");
             div.className = "checkRow";
@@ -55,6 +57,16 @@ function createVerbOptions(verbList){
 
             document.getElementById("checkZone").appendChild(div);
         }
+
+        for(var i = 0; i < groupList.length; i++){
+            console.log(groupList[i]);
+            var bob = document.createElement("input");
+            bob.className = "groupCheck";
+            bob.type = "checkbox";
+            document.getElementById("checkZone").appendChild(bob);
+        }
+
+
     } else {
         desc.innerHTML = singleDescription;
         document.getElementsByClassName("contentContainer").appendChild(desc);
