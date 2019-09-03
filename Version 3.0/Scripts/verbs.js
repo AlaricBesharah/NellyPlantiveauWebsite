@@ -66,11 +66,38 @@ function createVerbOptions(verbList, groupList){
             document.getElementById("checkZone").appendChild(bob);
         }
 
-
     } else {
         desc.innerHTML = singleDescription;
         document.getElementsByClassName("contentContainer").appendChild(desc);
     }
+}
+
+function testBoi(){
+
+    var randomGroup; 
+    var chosenGroup;
+    var selectedGroups = []; // list of selected indices 
+
+    // Fetch la list of all the verb groups that are selected
+    var groups = document.getElementsByClassName("groupCheck");
+   
+    for(var i = 0; i<groups.length; i++){
+        if(groups[i].checked){selectedGroups.push(i)}; 
+    }
+    
+    // Select a group out of those selected
+    // if no groups selected, treat it like all are selected
+    
+    randomGroup = selectedGroups.length > 0 ? getRandomInt(0,selectedGroups.length) : getRandomInt(0,groups.length) ;
+    chosenGroup = selectedGroups[randomGroup]; // BLEH
+    
+    // Select a verb in the selected group
+        // Determine checked verbs in irregular group if irregular group is selected
+
+    // Search for the selected verb in the first colomn of the selected tense.
+
+    // Return index at which the verb appears. 
+
 }
 
 
