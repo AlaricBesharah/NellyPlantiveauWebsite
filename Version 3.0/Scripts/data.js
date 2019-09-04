@@ -287,7 +287,7 @@ var imperatif = [
     will just affect the order in which they are displayed 
     in the HTML.
 */ 
-var verbs103 = [present];
+var verbs103 = [present]; // OLD AND USELESS
 var verbs106 = [present, imparfait, passéComposé, imperatif];
 
 

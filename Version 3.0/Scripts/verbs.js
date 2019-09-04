@@ -5,7 +5,7 @@
 
 var singleDescription = "Temporary FREN 103 verb practise description.";
 var multipleDescription = "Select all the verb tenses which you want to include in your practice. Chaning your selection will update the workspace.";
-var emptyMessage = "Select at least one verb tense to begin";
+var emptyMessage = "Select at least one tense and group to start";
 var currentVerb;
 var guessTag = false;
 
@@ -59,10 +59,10 @@ function createVerbOptions(verbList, groupList){
         }
 
         for(var i = 0; i < groupList.length; i++){
-            console.log(groupList[i]);
             var bob = document.createElement("input");
             bob.className = "groupCheck";
             bob.type = "checkbox";
+            bob.onchange = function(){loadVerbOptions("106");}
             document.getElementById("checkZone").appendChild(bob);
         }
 
@@ -74,8 +74,10 @@ function createVerbOptions(verbList, groupList){
 
 function testBoi(){
 
+    console.log("boggs");
+
     var randomGroup; 
-    var chosenGroup;
+    var chosenIndex;
     var selectedGroups = []; // list of selected indices 
 
     // Fetch la list of all the verb groups that are selected
@@ -86,18 +88,65 @@ function testBoi(){
     }
     
     // Select a group out of those selected
-    // if no groups selected, treat it like all are selected
+
+    randomGroup = getRandomInt(0,selectedGroups.length);
+    chosenIndex = selectedGroups[randomGroup]; 
+
+    console.log(chosenIndex);
     
-    randomGroup = selectedGroups.length > 0 ? getRandomInt(0,selectedGroups.length) : getRandomInt(0,groups.length) ;
-    chosenGroup = selectedGroups[randomGroup]; // BLEH
     
-    // Select a verb in the selected group
-        // Determine checked verbs in irregular group if irregular group is selected
 
-    // Search for the selected verb in the first colomn of the selected tense.
+}
 
-    // Return index at which the verb appears. 
+function test(page){
+    var chosenIndex;
+    var group;
+    var selectedGroups = []; // list of selected indices 
+    var selectedTenses = []; 
 
+    // Fetch la list of all the verb groups that are selected
+    var groups = document.getElementsByClassName("groupCheck");
+    for(var i = 0; i<groups.length; i++) if(groups[i].checked) selectedGroups.push(i); 
+    
+    if(selectedGroups.length > 0){ 
+        group = groupList[selectedGroups[getRandomInt(0,selectedGroups.length)]];
+        // TODO here if it's irregular get more info
+        var verbFromGroup = group[getRandomInt(0, group.length)];
+        // console.log(verbFromGroup);
+    }
+    var allVerbs = document.getElementsByClassName("checkBoxes");
+    var selectedTenses = [];
+    for(var i = 0; i < allVerbs.length; i++){
+        if(allVerbs[i].checked){selectedTenses.push(i)}
+    }
+    if(selectedTenses.length > 0 & selectedGroups.length > 0){
+        hideTestZone(false);
+        var randomeTense = getRandomInt(0,selectedTenses.length);
+        tense_ = verbs106[selectedTenses[randomeTense]]; 
+    }else{
+        hideTestZone(true);
+        return;
+    }
+    var verbName = tense_[0][0];
+    var foundTense;
+    for(var i = 1; i<tense_.length;i++){
+        if(tense_[i][0] === verbFromGroup){
+            foundTense = i;
+            break;
+        }
+    }
+    // tense_ = present ex
+    // var person = getRandomInt(1,selectedVerb[index].length); 
+    var person = getRandomInt(1, tense_[foundTense].length);
+    var infinitif = tense_[foundTense][0];
+    var pronoun = tense_[0][person];
+    var verb = tense_[foundTense][person];
+
+    if(startsWithVowel(verb) && person === 1 && pronoun.charAt(0)!='(') { 
+        pronoun = "j'"; 
+    }
+    setContent(verbName, infinitif, pronoun, verb);
+    setButtons(verb, page);
 }
 
 
@@ -109,28 +158,41 @@ function testBoi(){
  * class is being displayed on the page
  * */
 function loadVerbOptions(page){
-    var selectedVerb;
-    
+    var chosenIndex;
+    var group;
+    var selectedGroups = []; // list of selected indices 
+    var selectedTenses = []; 
+    var groups = document.getElementsByClassName("groupCheck");
+    for(var i = 0; i<groups.length; i++) if(groups[i].checked) selectedGroups.push(i); 
+    if(selectedGroups.length > 0){ 
+        group = groupList[selectedGroups[getRandomInt(0,selectedGroups.length)]];
+        // TODO here if it's irregular get more info
+        var verbFromGroup = group[getRandomInt(0, group.length)];
+    }
     var allVerbs = document.getElementsByClassName("checkBoxes");
     var selectedTenses = [];
-    for(var i = 0; i < allVerbs.length; i++){
-        if(allVerbs[i].checked){selectedTenses.push(i)}
-    }
-    if(selectedTenses.length > 0){
+    for(var i = 0; i < allVerbs.length; i++) if(allVerbs[i].checked)selectedTenses.push(i);
+    if(selectedTenses.length > 0 & selectedGroups.length > 0){
         hideTestZone(false);
         var randomeTense = getRandomInt(0,selectedTenses.length);
-        selectedVerb = verbs106[selectedTenses[randomeTense]]; 
+        tense_ = verbs106[selectedTenses[randomeTense]]; 
     }else{
         hideTestZone(true);
         return;
     }
-    
-    var verbName = selectedVerb[0][0];
-    var index = getRandomInt(1, selectedVerb.length); 
-    var person = getRandomInt(1,selectedVerb[index].length); 
-    var infinitif = selectedVerb[index][0];
-    var pronoun = selectedVerb[0][person];
-    var verb = selectedVerb[index][person];
+    var verbName = tense_[0][0];
+    var foundTense;
+    for(var i = 1; i<tense_.length;i++){
+        if(tense_[i][0] === verbFromGroup){
+            foundTense = i;
+            break;
+        }
+    }
+    var person = getRandomInt(1, tense_[foundTense].length);
+    var infinitif = tense_[foundTense][0];
+    var pronoun = tense_[0][person];
+    var verb = tense_[foundTense][person];
+
     if(startsWithVowel(verb) && person === 1 && pronoun.charAt(0)!='(') { 
         pronoun = "j'"; 
     }
