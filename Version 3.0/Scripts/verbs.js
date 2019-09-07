@@ -1,17 +1,10 @@
-/**
- * Hello, this js files handles everything to do with the VERBS..
- * 
- */
-
 var singleDescription = "Temporary FREN 103 verb practise description.";
 var multipleDescription = "Select all the verb tenses which you want to include in your practice. Chaning your selection will update the workspace.";
 var emptyMessage = "Select at least one tense and group to start";
 var currentVerb;
 var guessTag = false;
 
-
 // TODO use guess tag to check if the score or display need to be updated. 
-
 
 /**
  * Takes a list of verbs and creates all the appropriate html elements
@@ -24,8 +17,7 @@ function createVerbOptions(verbList, groupList){
     desc.className = "description";
 
     // This event listener is added seperately from the buttons
-    // otherwise it breaks the score increase. 
-    // This could be moved somewhere better in the future if I were more motivated, but it lives here for now. 
+    // otherwise it breaks the score increase.
     document.getElementById("answer")
     .addEventListener("keyup", function(event) {
         event.preventDefault();
@@ -36,93 +28,53 @@ function createVerbOptions(verbList, groupList){
 
     if(verbList.length > 1){
         desc.innerHTML = multipleDescription;
-        // document.getElementById("checkZone").appendChild(desc);
 
         // Create a check box for each verb tense
         for(var i = 0; i < verbList.length; i++){
-            var div = document.createElement("div");
-            div.className = "checkRow";
-
-            var input = document.createElement("input");
-            input.className = "checkBoxes";
-            input.type = "checkbox";
-            input.onchange = function(){loadVerbOptions("106");}
-
-            var para = document.createElement("p");
-            para.innerHTML = verbList[i][0][0];
-            para.className = "checkTag";
-
-            div.appendChild(input);
-            div.appendChild(para);
-
-            document.getElementById("tenseZone").appendChild(div);
+            createCheckRows("checkBoxes", verbList[i][0][0], "tenseZone");
         }
 
         for(var i = 0; i < groupList.length; i++){
             if(i === 2){
-                var div = document.createElement("div");
-                div.className = "checkRow";
-
-                var bob = document.createElement("input");
-                bob.className = "groupCheck";
-                bob.type = "checkbox";
-                bob.onchange = function(){loadVerbOptions("106");}
-
-                var para = document.createElement("p");
-                para.innerHTML = groupList[i][groupList[i].length - 1];
-                para.className = "checkTag";
-
-                div.appendChild(bob);
-                div.appendChild(para);
-                document.getElementById("groupZone").appendChild(div);
-
+                createCheckRows("groupCheck", groupList[i][groupList[i].length - 1], "groupZone");
                 for(var j = 0; j < groupList[2].length - 1; j++){
-                    var div = document.createElement("div");
-                    div.className = "checkRow";
-
-                    var irreg = document.createElement("input");
-                    irreg.className = "irregCheck";
-                    irreg.type = "checkbox";
-                    irreg.onchange = function(){loadVerbOptions("106");}
-
-                    var p = document.createElement("p");
-                    p.innerHTML = groupList[2][j];
-                    p.className = "checkTag";
-
-                    div.appendChild(irreg);
-                    div.appendChild(p);
-                    document.getElementById("irregZone").appendChild(div);
+                    createCheckRows("irregCheck", groupList[2][j], "irregZone");
                 }
             }else{
-                var div = document.createElement("div");
-                div.className = "checkRow";
-
-                var bob = document.createElement("input");
-                bob.className = "groupCheck";
-                bob.type = "checkbox";
-                bob.onchange = function(){loadVerbOptions("106");}
-
-                var para = document.createElement("p");
-                para.innerHTML = groupList[i][groupList[i].length - 1];
-                para.className = "checkTag";
-
-                div.appendChild(bob);
-                div.appendChild(para);
-                document.getElementById("groupZone").appendChild(div);
+                createCheckRows("groupCheck", groupList[i][groupList[i].length - 1], "groupZone");
             }
         }
-
-        // var button = document.createElement("button");
-        // button.innerHTML = "Irregular Verbs";
-        // button.onclick = function(){
-        //     document.getElementById("irregZone").style.maxHeight = "10000px";
-        // };
-        // document.getElementById("groupZone").appendChild(button);
-
     } else {
         desc.innerHTML = singleDescription;
         document.getElementsByClassName("contentContainer").appendChild(desc);
     }
+}
+
+/**
+ * Creates a div with a check box and a tag and appends it to a
+ * given location.
+ * 
+ * @param class_      - what kind of checkbox input it is
+ * @param content     - what tag has to go next to the input 
+ * @param destination - where the new div has to be appended 
+ */
+function createCheckRows(class_, content, destination){
+    // alert(class_ + " " + content + " " + destination);
+    var div = document.createElement("div");
+    div.className = "checkRow";
+
+    var check = document.createElement("input");
+    check.className = class_;
+    check.type = "checkbox";
+    check.onchange = function(){loadVerbOptions("106");}
+
+    var para = document.createElement("p");
+    para.innerHTML = content;
+    para.className = "checkTag";
+
+    div.appendChild(check);
+    div.appendChild(para);
+    document.getElementById(destination).appendChild(div);
 }
 
 
