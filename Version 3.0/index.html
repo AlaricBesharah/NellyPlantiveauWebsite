@@ -5,11 +5,11 @@
   <title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link id="pagestyle" rel="stylesheet" href="Stylesheets/style.css">
-  <link rel="stylesheet" href="Stylesheets/grid.css">
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
-  <script src="scripts/data.js"></script>
-  <script src="scripts/verbs.js"></script>
+  <script src="Scripts/data.js"></script>
+  <script src="Scripts/verbs.js"></script>
+  <script src="Scripts/test.js"></script>
 </head>
 <body>
   
@@ -17,9 +17,8 @@
   <h1>French Conjugation Practice</h1>
   <div class="container"> 
     <div class="centeredContent">
-        
+        <p id="siteDescription">Select all the verb tenses and groups that you want to include in your practice. Changing your selection will update the workspace.</p>
         <div class="contentContainer">
-          <div id="checkZone"><p id="siteDescription">Select all the verb tenses which you want to include in your practice. Changing your selection will update the workspace.</p></div>
           <div id ="verbTest">
               <div id="scoreContainer">
                   <p id="scoreCounter"></p>
@@ -52,10 +51,17 @@
           </div>
           <button id="resetButton" class="openButton">skip</button>
           </div>
+      <div id="checkZone">
+        <div id="tenseZone"></div>
+        <div id="groupZone"></div>
+        <!-- <div id="empty"></div> -->
+        <div id="irregZone"><p class="zoneHeader">Irregular verbs to include</p></div>
+      </div>
       </div>
     </div>
   </div>
     <script>loadScore();</script>
-    <script>createVerbOptions(verbs106);</script>
+    <script>createVerbOptions(verbs106, groupList);</script>
     <script>loadVerbOptions("106");</script>
 </body>
+</html>

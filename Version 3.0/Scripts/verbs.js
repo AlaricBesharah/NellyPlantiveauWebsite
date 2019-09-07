@@ -5,7 +5,7 @@
 
 var singleDescription = "Temporary FREN 103 verb practise description.";
 var multipleDescription = "Select all the verb tenses which you want to include in your practice. Chaning your selection will update the workspace.";
-var emptyMessage = "Select at least one verb tense to begin";
+var emptyMessage = "Select at least one tense and group to start";
 var currentVerb;
 var guessTag = false;
 
@@ -19,12 +19,13 @@ var guessTag = false;
  * 
  * @param verbList a list of verbs, for now either verbs103 or verbs106
  */
-function createVerbOptions(verbList){
+function createVerbOptions(verbList, groupList){
     var desc = document.createElement("p");
     desc.className = "description";
 
     // This event listener is added seperately from the buttons
     // otherwise it breaks the score increase. 
+    // This could be moved somewhere better in the future if I were more motivated, but it lives here for now. 
     document.getElementById("answer")
     .addEventListener("keyup", function(event) {
         event.preventDefault();
@@ -37,6 +38,7 @@ function createVerbOptions(verbList){
         desc.innerHTML = multipleDescription;
         // document.getElementById("checkZone").appendChild(desc);
 
+        // Create a check box for each verb tense
         for(var i = 0; i < verbList.length; i++){
             var div = document.createElement("div");
             div.className = "checkRow";
@@ -53,8 +55,70 @@ function createVerbOptions(verbList){
             div.appendChild(input);
             div.appendChild(para);
 
-            document.getElementById("checkZone").appendChild(div);
+            document.getElementById("tenseZone").appendChild(div);
         }
+
+        for(var i = 0; i < groupList.length; i++){
+            if(i === 2){
+                var div = document.createElement("div");
+                div.className = "checkRow";
+
+                var bob = document.createElement("input");
+                bob.className = "groupCheck";
+                bob.type = "checkbox";
+                bob.onchange = function(){loadVerbOptions("106");}
+
+                var para = document.createElement("p");
+                para.innerHTML = groupList[i][groupList[i].length - 1];
+                para.className = "checkTag";
+
+                div.appendChild(bob);
+                div.appendChild(para);
+                document.getElementById("groupZone").appendChild(div);
+
+                for(var j = 0; j < groupList[2].length - 1; j++){
+                    var div = document.createElement("div");
+                    div.className = "checkRow";
+
+                    var irreg = document.createElement("input");
+                    irreg.className = "irregCheck";
+                    irreg.type = "checkbox";
+                    irreg.onchange = function(){loadVerbOptions("106");}
+
+                    var p = document.createElement("p");
+                    p.innerHTML = groupList[2][j];
+                    p.className = "checkTag";
+
+                    div.appendChild(irreg);
+                    div.appendChild(p);
+                    document.getElementById("irregZone").appendChild(div);
+                }
+            }else{
+                var div = document.createElement("div");
+                div.className = "checkRow";
+
+                var bob = document.createElement("input");
+                bob.className = "groupCheck";
+                bob.type = "checkbox";
+                bob.onchange = function(){loadVerbOptions("106");}
+
+                var para = document.createElement("p");
+                para.innerHTML = groupList[i][groupList[i].length - 1];
+                para.className = "checkTag";
+
+                div.appendChild(bob);
+                div.appendChild(para);
+                document.getElementById("groupZone").appendChild(div);
+            }
+        }
+
+        // var button = document.createElement("button");
+        // button.innerHTML = "Irregular Verbs";
+        // button.onclick = function(){
+        //     document.getElementById("irregZone").style.maxHeight = "10000px";
+        // };
+        // document.getElementById("groupZone").appendChild(button);
+
     } else {
         desc.innerHTML = singleDescription;
         document.getElementsByClassName("contentContainer").appendChild(desc);
@@ -70,28 +134,43 @@ function createVerbOptions(verbList){
  * class is being displayed on the page
  * */
 function loadVerbOptions(page){
-    var selectedVerb;
-    
+    var chosenIndex;
+    var group;
+    var selectedGroups = []; // list of selected indices 
+    var selectedTenses = []; 
+    var groups = document.getElementsByClassName("groupCheck");
+    for(var i = 0; i<groups.length; i++) if(groups[i].checked) selectedGroups.push(i); 
+    if(selectedGroups.length > 0){
+        var selectedGroupIndex = selectedGroups[getRandomInt(0,selectedGroups.length)]; 
+        group = groupList[selectedGroupIndex];
+        // TODO here if it's irregular get more info
+        if(selectedGroupIndex === 2){}
+        var verbFromGroup = group[getRandomInt(0, group.length - 1)];
+    }
     var allVerbs = document.getElementsByClassName("checkBoxes");
     var selectedTenses = [];
-    for(var i = 0; i < allVerbs.length; i++){
-        if(allVerbs[i].checked){selectedTenses.push(i)}
-    }
-    if(selectedTenses.length > 0){
+    for(var i = 0; i < allVerbs.length; i++) if(allVerbs[i].checked)selectedTenses.push(i);
+    if(selectedTenses.length > 0 & selectedGroups.length > 0){
         hideTestZone(false);
         var randomeTense = getRandomInt(0,selectedTenses.length);
-        selectedVerb = verbs106[selectedTenses[randomeTense]]; 
+        tense_ = verbs106[selectedTenses[randomeTense]]; 
     }else{
         hideTestZone(true);
         return;
     }
-    
-    var verbName = selectedVerb[0][0];
-    var index = getRandomInt(1, selectedVerb.length); 
-    var person = getRandomInt(1,selectedVerb[index].length); 
-    var infinitif = selectedVerb[index][0];
-    var pronoun = selectedVerb[0][person];
-    var verb = selectedVerb[index][person];
+    var verbName = tense_[0][0];
+    var foundTense;
+    for(var i = 1; i<tense_.length;i++){
+        if(tense_[i][0] === verbFromGroup){
+            foundTense = i;
+            break;
+        }
+    }
+    var person = getRandomInt(1, tense_[foundTense].length);
+    var infinitif = tense_[foundTense][0];
+    var pronoun = tense_[0][person];
+    var verb = tense_[foundTense][person];
+
     if(startsWithVowel(verb) && person === 1 && pronoun.charAt(0)!='(') { 
         pronoun = "j'"; 
     }

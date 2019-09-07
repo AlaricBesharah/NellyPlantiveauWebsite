@@ -6,21 +6,9 @@ body {
     background:#eee;
 }
 
-.bg-image {
-    /* The image used */
-    background-image: url("../Images/grosparis.jpg");
+p{
+    color: #555;
     
-  
-    /* Add the blur effect */
-    filter: blur(3px) grayscale(60%);
-  
-    /* Full height */
-    height: 100%; 
-  
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 ::selection {
@@ -87,12 +75,51 @@ h1 {
 }
 
 .checkRow {
-    text-align: left;
-    margin:auto;
+    display:flex;
+    justify-content: flex-start;
     color:white;
-    width:90%;
-    max-width:750px;
-    height:30px;
+    width:46%;
+    margin:auto;
+    height:35px;
+}
+
+#checkZone{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "tense group"
+        "tense irreg"
+    ;
+    margin:auto;
+    max-width:650px;
+}
+
+#tenseZone{
+    grid-area: tense;
+    /* background: #3195dd; */
+}
+
+#groupZone{
+    grid-area: group;
+    /* background:pink; */
+}
+
+#groupZone button{
+    display:block;
+    margin:auto;
+}
+
+#irregZone{
+    transition: max-height ease 0.5s;
+    height:auto;
+    overflow: hidden;
+    grid-area: irreg;
+}
+
+.zoneHeader{
+    text-align: center;
+    color:#42aaf4;
 }
 
 #siteDescription{
@@ -106,7 +133,6 @@ h1 {
 
 .checkRow input{
     position: relative;
-    top:12px;
     width:20px;
     height:20px;
     -webkit-appearance: none;
@@ -143,14 +169,10 @@ h1 {
 	background-color: white;
 }
 
-.contentContainer{
+/* .contentContainer{
     width:100%;
     margin-bottom:120px;
-}
-.contentContainer p{
-    /* margin-left:5%; */
-    color: #555;
-}
+} */
 
 #emptyMessage{
     text-align:center;
@@ -160,12 +182,10 @@ h1 {
 
 .checkTag{
     font-size:110%;
-    margin-left:0px;
-    color:black;
     text-transform: capitalize;
     position:relative;
-    top:-37px;
-    left:40px;
+    top:-18px;
+    left:15px;
 }
 
 #verbTest{
