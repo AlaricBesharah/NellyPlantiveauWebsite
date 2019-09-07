@@ -291,9 +291,9 @@ var verbs103 = [present]; // OLD AND USELESS
 var verbs106 = [present, imparfait, passéComposé, imperatif];
 
 
-var ERVerbs = ["manger", "rentrer", "passer"];
-var IRVerbs = ["aimer", "adorer", "appeler"];
-var IRREGULARVerbs = ["nettoyer", "simplifier"];
+var ERVerbs = ["manger", "rentrer", "passer", "ER Verbs"];
+var IRVerbs = [ "aimer", "adorer", "appeler", "IR Verbs"];
+var IRREGULARVerbs = ["nettoyer", "simplifier","profiter", "réserver", "Irregular Verbs"];
 
 var groupList = [ERVerbs, IRVerbs, IRREGULARVerbs];
 
