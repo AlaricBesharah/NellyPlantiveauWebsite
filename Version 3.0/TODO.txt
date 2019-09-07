@@ -1,0 +1,4 @@
+- only include checked irreg verbs
+- add real verbs 
+- add a check/uncheck all button for them
+- stop unlimited points and guessing

@@ -88,6 +88,7 @@ function createCheckRows(class_, content, destination){
 function loadVerbOptions(page){
     var chosenIndex;
     var group;
+    var verbFromGroup;
     var selectedGroups = []; // list of selected indices 
     var selectedTenses = []; 
     var groups = document.getElementsByClassName("groupCheck");
@@ -96,8 +97,16 @@ function loadVerbOptions(page){
         var selectedGroupIndex = selectedGroups[getRandomInt(0,selectedGroups.length)]; 
         group = groupList[selectedGroupIndex];
         // TODO here if it's irregular get more info
-        if(selectedGroupIndex === 2){}
-        var verbFromGroup = group[getRandomInt(0, group.length - 1)];
+        if(selectedGroupIndex === 2){
+            var allIrregChecks = document.getElementsByClassName("irregCheck");
+            var selectedIrrregs = [];
+            for(var j = 0; j < allIrregChecks.length; j++) if(allIrregChecks[j].checked) selectedIrrregs.push(j);
+            console.log(selectedIrrregs);
+            varFromGroup = group[selectedIrrregs[getRandomInt(0, selectedIrrregs.length)]]; // THIS TO FIX
+        }
+        else{
+            verbFromGroup = group[getRandomInt(0, group.length - 1)];
+        }
     }
     var allVerbs = document.getElementsByClassName("checkBoxes");
     var selectedTenses = [];
