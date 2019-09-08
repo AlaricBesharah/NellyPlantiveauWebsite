@@ -1,7 +1,4 @@
-var singleDescription = "Temporary FREN 103 verb practise description.";
-var multipleDescription = "Select all the verb tenses which you want to include in your practice. Chaning your selection will update the workspace.";
 var emptyMessage = "Select at least one tense and group to start";
-var currentVerb;
 var guessTag = false;
 
 // TODO use guess tag to check if the score or display need to be updated. 
@@ -13,11 +10,7 @@ var guessTag = false;
  * @param verbList a list of verbs, for now either verbs103 or verbs106
  */
 function createVerbOptions(verbList, groupList){
-    var desc = document.createElement("p");
-    desc.className = "description";
 
-    // This event listener is added seperately from the buttons
-    // otherwise it breaks the score increase.
     document.getElementById("answer")
     .addEventListener("keyup", function(event) {
         event.preventDefault();
@@ -26,40 +19,31 @@ function createVerbOptions(verbList, groupList){
         }
     });
 
-    if(verbList.length > 1){
-        desc.innerHTML = multipleDescription;
-
-        // Create a check box for each verb tense
-        for(var i = 0; i < verbList.length; i++){
-            createCheckRows("checkBoxes", verbList[i][0][0], "tenseZone");
-        }
-
-        for(var i = 0; i < groupList.length; i++){
-            if(i === 2){
-                createCheckRows("groupCheck", groupList[i][groupList[i].length - 1], "groupZone");
-                for(var j = 0; j < groupList[2].length - 1; j++){
-                    createCheckRows("irregCheck", groupList[2][j], "irregZone");
-                }
-            }else{
-                createCheckRows("groupCheck", groupList[i][groupList[i].length - 1], "groupZone");
-            }
-        }
-    } else {
-        desc.innerHTML = singleDescription;
-        document.getElementsByClassName("contentContainer").appendChild(desc);
+    for(var i = 0; i < verbList.length; i++){
+        createCheckRows("checkBoxes", verbList[i][0][0], "tenseZone");
     }
+    
+    for(var i = 0; i < groupList.length; i++){
+        if(i === 2){
+            createCheckRows("groupCheck", groupList[i][groupList[i].length - 1], "groupZone");
+            for(var j = 0; j < groupList[2].length - 1; j++){
+                createCheckRows("irregCheck", groupList[2][j], "irregZone");
+            }
+        }else{
+            createCheckRows("groupCheck", groupList[i][groupList[i].length - 1], "groupZone");
+        }
+    } 
 }
 
 /**
- * Creates a div with a check box and a tag and appends it to a
- * given location.
+ * Helper function that creates a div with a check box and a tag and 
+ * appends it to a given location.
  * 
  * @param class_      - what kind of checkbox input it is
  * @param content     - what tag has to go next to the input 
  * @param destination - where the new div has to be appended 
  */
 function createCheckRows(class_, content, destination){
-    // alert(class_ + " " + content + " " + destination);
     var div = document.createElement("div");
     div.className = "checkRow";
 
@@ -99,7 +83,6 @@ function loadVerbOptions(page){
         var allIrregChecks = document.getElementsByClassName("irregCheck"); 
         for(var j = 0; j < allIrregChecks.length; j++) if(allIrregChecks[j].checked) selectedIrrregs.push(j);
         group = groupList[selectedGroupIndex];
-        // TODO here if it's irregular get more info
         if(selectedGroupIndex === 2 && selectedIrrregs.length > 0){
             verbFromGroup = group[selectedIrrregs[getRandomInt(0, selectedIrrregs.length)]];
         }
