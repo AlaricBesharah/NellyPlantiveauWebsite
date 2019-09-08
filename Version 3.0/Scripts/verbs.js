@@ -91,22 +91,22 @@ function loadVerbOptions(page){
     var verbFromGroup;
     var selectedGroups = []; // list of selected indices 
     var selectedTenses = []; 
+    var selectedIrrregs = [];
     var groups = document.getElementsByClassName("groupCheck");
     for(var i = 0; i<groups.length; i++) if(groups[i].checked) selectedGroups.push(i); 
     if(selectedGroups.length > 0){
-        var selectedGroupIndex = selectedGroups[getRandomInt(0,selectedGroups.length)]; 
+        var selectedGroupIndex = selectedGroups[getRandomInt(0,selectedGroups.length)];
+        var allIrregChecks = document.getElementsByClassName("irregCheck"); 
+        for(var j = 0; j < allIrregChecks.length; j++) if(allIrregChecks[j].checked) selectedIrrregs.push(j);
         group = groupList[selectedGroupIndex];
         // TODO here if it's irregular get more info
-        if(selectedGroupIndex === 2){
-            var allIrregChecks = document.getElementsByClassName("irregCheck");
-            var selectedIrrregs = [];
-            for(var j = 0; j < allIrregChecks.length; j++) if(allIrregChecks[j].checked) selectedIrrregs.push(j);
-            console.log(selectedIrrregs);
-            varFromGroup = group[selectedIrrregs[getRandomInt(0, selectedIrrregs.length)]]; // THIS TO FIX
+        if(selectedGroupIndex === 2 && selectedIrrregs.length > 0){
+            verbFromGroup = group[selectedIrrregs[getRandomInt(0, selectedIrrregs.length)]];
         }
         else{
             verbFromGroup = group[getRandomInt(0, group.length - 1)];
         }
+    
     }
     var allVerbs = document.getElementsByClassName("checkBoxes");
     var selectedTenses = [];
