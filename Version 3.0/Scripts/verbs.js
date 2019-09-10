@@ -106,7 +106,7 @@ function loadVerbOptions(page){
     var pronoun = tense_[0][person];
     var verb = tense_[foundTense][person];
 
-    if(startsWithVowel(verb) && person === 1 && pronoun.charAt(0)!='(') { 
+    if(startsWithVowel(verb) && person === 2 && pronoun.charAt(0)!='(') { 
         pronoun = "j'"; 
     }
     setContent(verbName, infinitif, pronoun, verb);

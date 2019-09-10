@@ -112,9 +112,8 @@ h1 {
 #irregZone{
     transition: ease-in-out 0.2s;
     height:auto;
-    overflow: hidden;
+    /* overflow: auto; */
     grid-area: irreg;
-    max-height:100px;
 }
 
 #irregZone button{
