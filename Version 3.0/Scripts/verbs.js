@@ -19,10 +19,17 @@ function createVerbOptions(verbList, groupList){
         }
     });
 
+    document.getElementById("expandButton").onclick = function(){
+        var irreg = document.getElementById("irregZone");
+        if(irreg.style.maxHeight === "100px") irreg.style.maxHeight = "300px";
+        else irreg.style.maxHeight = "100px";
+
+    }
+
     for(var i = 0; i < verbList.length; i++){
         createCheckRows("checkBoxes", verbList[i][0][0], "tenseZone");
     }
-    
+
     for(var i = 0; i < groupList.length; i++){
         if(i === 2){
             createCheckRows("groupCheck", groupList[i][groupList[i].length - 1], "groupZone");

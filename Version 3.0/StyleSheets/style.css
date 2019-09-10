@@ -8,7 +8,6 @@ body {
 
 p{
     color: #555;
-    
 }
 
 ::selection {
@@ -111,10 +110,24 @@ h1 {
 }
 
 #irregZone{
-    transition: max-height ease 0.5s;
+    transition: ease-in-out 0.2s;
     height:auto;
     overflow: hidden;
     grid-area: irreg;
+    max-height:100px;
+}
+
+#irregZone button{
+    display:block;
+    margin:0 auto 15px auto;
+    background-color: #42aaf4; /* Green */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
 }
 
 .zoneHeader{
