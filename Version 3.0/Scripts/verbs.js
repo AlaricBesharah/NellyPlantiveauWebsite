@@ -10,37 +10,21 @@ var guessTag = false;
  * @param verbList a list of verbs, for now either verbs103 or verbs106
  */
 function createVerbOptions(verbList, groupList){
-
     document.getElementById("answer")
     .addEventListener("keyup", function(event) {
         event.preventDefault();
-        if (event.keyCode === 13) {
+        if (event.keyCode === 13)
             document.getElementById("testButton").click();
-        }
     });
-
-    document.getElementById("expandButton").onclick = function(){
-        var irreg = document.getElementById("irregZone");
-        if(irreg.style.maxHeight === "100px") irreg.style.maxHeight = "300px";
-        else irreg.style.maxHeight = "100px";
-
-    }
-
-    for(var i = 0; i < verbList.length; i++){
+    for(var i = 0; i < verbList.length; i++)
         createCheckRows("checkBoxes", verbList[i][0][0], "tenseZone");
-    }
-
+    
     for(var i = 0; i < groupList.length; i++){
+        createCheckRows("groupCheck", groupList[i][groupList[i].length - 1], "groupZone");
         if(i === 2){
-            createCheckRows("groupCheck", groupList[i][groupList[i].length - 1], "groupZone");
-            for(var j = 0; j < groupList[2].length - 1; j++){
-                createCheckRows("irregCheck", groupList[2][j], "irregZone");
-            }
-        }else{
-            createCheckRows("groupCheck", groupList[i][groupList[i].length - 1], "groupZone");
-        }
-    } 
-}
+            for(var j = 0; j < groupList[i].length - 1; j++)
+                createCheckRows("irregCheck", groupList[i][j], "irregZone");
+}   }   }
 
 /**
  * Helper function that creates a div with a check box and a tag and 
@@ -117,7 +101,7 @@ function loadVerbOptions(page){
             break;
         }
     }
-    var person = getRandomInt(1, tense_[foundTense].length);
+    var person = getRandomInt(2, tense_[foundTense].length);
     var infinitif = tense_[foundTense][0];
     var pronoun = tense_[0][person];
     var verb = tense_[foundTense][person];
@@ -188,6 +172,14 @@ function setButtons(verb, _class){
     document.getElementById("resetButton").onclick = function() { 
         loadVerbOptions(_class);
         document.getElementById("answer").focus(); 
+    }
+}
+
+function initializeIrregButton(){
+    document.getElementById("expandButton").onclick = function(){
+        var irreg = document.getElementById("irregZone");
+        if(irreg.style.maxHeight === "100px") irreg.style.maxHeight = "300px";
+        else irreg.style.maxHeight = "100px";
     }
 }
 

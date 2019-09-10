@@ -157,7 +157,7 @@ present = [
     ["se dépêcher","to hurry","me dépêche","te dépêches","se dépêche","nous dépêchons","vous dépêchez","se dépêchent"],
     ["se détendre","to relax","me détends","te détends","se détend","nous détendons","vous détendez","se détendent"],
     ["se disputer","to argue","me dispute","te disputes","se dispute","nous disputons","vous disputez","se disputent"],
-    ["se fÃƒÂ¢cher","to get angry","me fÃƒÂ¢che","te fÃƒÂ¢ches","se fÃƒÂ¢che","nous fÃƒÂ¢chons","vous fÃƒÂ¢chez","se fÃƒÂ¢chent"],
+    ["se fâcher","to get angry","me fâche","te fâches","se fâche","nous fâchons","vous fâchez","se fâchent"],
     ["se fiancer","to get engaged","me fiance","te fiances","se fiance","nous fiançons","vous fiancez","se fiancent"],
     ["se laver ","to wash","me lave","tu te laves","se lave","nous lavons","vous lavez","se lavent"],
     ["se lever","to get up","me lève","te lèves","se lève","nous levons","vous levez","se lèvent"],
