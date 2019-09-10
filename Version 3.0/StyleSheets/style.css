@@ -88,7 +88,7 @@ h1 {
     grid-template-rows: auto auto;
     grid-template-areas: 
         "tense group"
-        "tense irreg"
+        "irreg irreg"
     ;
     margin:auto;
     max-width:650px;
@@ -112,8 +112,18 @@ h1 {
 #irregZone{
     transition: ease-in-out 0.2s;
     height:auto;
-    /* overflow: auto; */
+    margin-top:20px;
+    display: grid;
+    grid-template-rows: 70px auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+        "title title"
+        "verbs verbs";
     grid-area: irreg;
+}
+
+#irregHeader{
+    grid-area:title;
 }
 
 #irregZone button{
@@ -127,6 +137,15 @@ h1 {
     text-align: center;
     text-decoration: none;
     font-size: 12px;
+}
+
+#irregZone .checkrow{
+    display:flex;
+    justify-content: flex-start;
+    color:white;
+    width:46%;
+    margin:auto;
+    height:35px;
 }
 
 .zoneHeader{

@@ -792,7 +792,6 @@ var ERVerbs = [
     "laisser",
     "laver",
     "louer",
-    "manger",
     "marcher",
     "monter",
     "nager",
@@ -827,9 +826,15 @@ var ERVerbs = [
     "traverser",
     "trouver",
     "vider",
-    "voyager",
+    
     "ER Verbs"
 ];
+
+var ERIrreg = [
+    "voyager",
+    "manger",
+    "ER Irregular"
+]
 
 var IRVerbs = [
     "accomplir", 

@@ -1,5 +1,6 @@
 var emptyMessage = "Select at least one tense and group to start";
 var guessTag = false;
+const irregPosition = 2;
 
 // TODO use guess tag to check if the score or display need to be updated. 
 
@@ -21,10 +22,12 @@ function createVerbOptions(verbList, groupList){
     
     for(var i = 0; i < groupList.length; i++){
         createCheckRows("groupCheck", groupList[i][groupList[i].length - 1], "groupZone");
-        if(i === 2){
+        if(i === irregPosition){
             for(var j = 0; j < groupList[i].length - 1; j++)
                 createCheckRows("irregCheck", groupList[i][j], "irregZone");
-}   }   }
+        }   
+    }   
+}
 
 /**
  * Helper function that creates a div with a check box and a tag and 
@@ -71,10 +74,11 @@ function loadVerbOptions(page){
     for(var i = 0; i<groups.length; i++) if(groups[i].checked) selectedGroups.push(i); 
     if(selectedGroups.length > 0){
         var selectedGroupIndex = selectedGroups[getRandomInt(0,selectedGroups.length)];
-        var allIrregChecks = document.getElementsByClassName("irregCheck"); 
+        var allIrregChecks = document.getElementsByClassName("irregCheck");
         for(var j = 0; j < allIrregChecks.length; j++) if(allIrregChecks[j].checked) selectedIrrregs.push(j);
         group = groupList[selectedGroupIndex];
-        if(selectedGroupIndex === 2 && selectedIrrregs.length > 0){
+        console.log(selectedGroupIndex);
+        if(selectedGroupIndex === irregPosition && selectedIrrregs.length > 0){
             verbFromGroup = group[selectedIrrregs[getRandomInt(0, selectedIrrregs.length)]];
         }
         else{
