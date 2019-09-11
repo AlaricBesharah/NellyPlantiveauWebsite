@@ -15,8 +15,6 @@
   
   <!-- <div class="bg-image"></div> -->
   <h1>French Conjugation Practice</h1>
-  <div class="container"> 
-    <div class="centeredContent">
         <p id="siteDescription">Select all the verb tenses and groups that you want to include in your practice. Changing your selection will update the workspace.</p>
         <div class="contentContainer">
           <div id ="verbTest">
@@ -51,16 +49,18 @@
           </div>
           <button id="resetButton" class="openButton">skip</button>
           </div>
-      <div id="checkZone">
-        <div id="tenseZone"></div>
-        <div id="groupZone"></div>
-        <div id="irregZone">
-          <p class="zoneHeader" id="irregHeader">Irregular verbs to include</p>
+          <div id="checkZone">
+          <div id="tenseZone">
+            <p class="zoneHeader">Tenses</p>
+          </div>
+          <div id="groupZone">
+            <p class="zoneHeader">Groups</p>
+          </div>
+          <div id="irregZone">
+            <p class="zoneHeader" id="irregHeader">Irregular verbs to include</p>
+          </div>
         </div>
       </div>
-      </div>
-    </div>
-  </div>
     <script>initializeIrregButton();</script>
     <script>loadScore();</script>
     <script>createVerbOptions(verbs106, groupList);</script>
