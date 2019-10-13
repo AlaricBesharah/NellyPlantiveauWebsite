@@ -1,6 +1,6 @@
 var emptyMessage = "Select at least one tense and group to start";
 var guessTag = false;
-const irregPosition = 2;
+const irregPosition = 2; // Where in the list the irregular verbs are. Very cool
 
 // TODO use guess tag to check if the score or display need to be updated. 
 
@@ -180,11 +180,11 @@ function setButtons(verb, _class){
 }
 
 function initializeIrregButton(){
-    document.getElementById("expandButton").onclick = function(){
-        var irreg = document.getElementById("irregZone");
-        if(irreg.style.maxHeight === "100px") irreg.style.maxHeight = "300px";
-        else irreg.style.maxHeight = "100px";
-    }
+    // document.getElementById("expandButton").onclick = function(){
+    //     var irreg = document.getElementById("irregZone");
+    //     if(irreg.style.maxHeight === "100px") irreg.style.maxHeight = "300px";
+    //     else irreg.style.maxHeight = "100px";
+    // }
 }
 
 /**
@@ -216,19 +216,22 @@ function submitVerb(verb){
  * @param hide boolean, true if the content is to be hidden, false otherwise.
  */
 function hideTestZone(hide){
-    var _container, _message, _block;
+    var _container, _message, _block, _messageStyle;
     if(hide){
         _container = 'none';
         _message = emptyMessage;
         _block = 'none';
+        _messageStyle = 'flex';
     }
     else{
         _container = 'flex';
         _message = '';
         _block = 'block';
+        _messageStyle = 'none';
     }
     document.getElementById("answerContainer").style.display = _container;
     document.getElementById("emptyMessage").innerHTML = _message;
+    document.getElementById("emptyMessage").style.display = _messageStyle;
     document.getElementById("verbTense").style.display = _block;
     document.getElementById("verbName").style.display = _block;
     document.getElementById("resetButton").style.display = _block;
