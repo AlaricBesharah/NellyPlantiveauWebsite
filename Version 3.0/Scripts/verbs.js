@@ -1,5 +1,5 @@
 var emptyMessage = "Select at least one tense and group to start";
-var guessTag = false;
+var guessed = false;
 const irregPosition = 2; // Where in the list the irregular verbs are. Very cool
 
 // TODO use guess tag to check if the score or display need to be updated. 
@@ -77,7 +77,6 @@ function loadVerbOptions(page){
         var allIrregChecks = document.getElementsByClassName("irregCheck");
         for(var j = 0; j < allIrregChecks.length; j++) if(allIrregChecks[j].checked) selectedIrrregs.push(j);
         group = groupList[selectedGroupIndex];
-        console.log(selectedGroupIndex);
         if(selectedGroupIndex === irregPosition && selectedIrrregs.length > 0){
             verbFromGroup = group[selectedIrrregs[getRandomInt(0, selectedIrrregs.length)]];
         }
@@ -173,7 +172,8 @@ function setButtons(verb, _class){
         submitVerb(verb);
     }
     
-    document.getElementById("resetButton").onclick = function() { 
+    document.getElementById("resetButton").onclick = function() {
+        guessed = false;
         loadVerbOptions(_class);
         document.getElementById("answer").focus(); 
     }
@@ -199,6 +199,7 @@ function submitVerb(verb){
     var answer = document.getElementById("answer").value;
     if(answer.toLowerCase() === verb){
         setScore(true);
+        guessed = true;
         document.getElementById("nah").style.display = "none";
         document.getElementById("ok").style.display = "inline-block";
         document.getElementById("resetButton").innerHTML = "next";
@@ -260,22 +261,24 @@ function appendChar(c, input){
  * @param answer boolean true if the user was correct 
  */
 function setScore(answer){
-    
-    var score = document.getElementById('scoreCounter');
 
-    // check if score hasn't been initialized and set to 0 if not.
-    if(window.localStorage.getItem('score') === null){
-        window.localStorage.setItem('score', '0');
-    }
-    if(answer){
-        var currentScore = parseInt(window.localStorage.getItem('score')) + 1;
-        window.localStorage.setItem('score', currentScore.toString());
-    }else{
-        window.localStorage.setItem('score', '0');
-    }
-    score.innerHTML = window.localStorage.getItem('score');
-    if(parseInt(localStorage.getItem('score')) > 0){
-        document.getElementById('scoreContainer').style.display = 'block';
+    if(!guessed){
+        var score = document.getElementById('scoreCounter');
+
+        // check if score hasn't been initialized and set to 0 if not.
+        if(window.localStorage.getItem('score') === null){
+            window.localStorage.setItem('score', '0');
+        }
+        if(answer){
+            var currentScore = parseInt(window.localStorage.getItem('score')) + 1;
+            window.localStorage.setItem('score', currentScore.toString());
+        }else{
+            window.localStorage.setItem('score', '0');
+        }
+        score.innerHTML = window.localStorage.getItem('score');
+        if(parseInt(localStorage.getItem('score')) > 0){
+            document.getElementById('scoreContainer').style.display = 'block';
+        }
     }
 }
 
